@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by ModBuddy on 2/7/2019 8:31:53 PM -->
 <GameData>
-  <!-- TODO: Insert table creation example here. -->
+  <!-- Definition de la civilization -->
+	<Row Tag ="TXT_KEY_CIV_DF_AUSTRIA_HUNGARY">
+		<Text>Austro-Hungarian Empire</Text>
+	</Row>
+	<Row Tag ="TXT_KEY_CIV_DF_AUSTRIA_HUNGARY_SHORT_DESC">
+		<Text>Austro-Hungarian Empire</Text>
+	</Row>
  
   <!-- TODO: Insert table data example here.-->
   
