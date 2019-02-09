@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+	<Language_en_US>
+		<Row Tag="TXT_KEY_CIV_TCM_AUSTRIA_HUNGARY_DESC">
+			<Text>Austro-Hungarian Empire</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV_TCM_AUSTRIA_HUNGARY_SHORT_DESC">
+			<Text>Austria-Hungary</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV_TCM_AUSTRIA_HUNGARY_ADJECTIVE">
+			<Text>Austro-Hungarian</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CIV5_DOM_TCM_AUSTRIA_HUNGARY_TEXT">
+			<Text>Great Franz Joseph of the Austro-Hungarian Empire, people far and wide throughout the lands cry for you to become their leader once more! Owing to your establishment of a state right in the heart of Europe, you were noted as a ruler of one of the so-called "Great Powers" of the day. Able to unite your people against foes that could crush the empire, forming a stable alliance with the new state of Germany in the process, your wisdom managed to save people that would have otherwise been subject to far harsher foreign domination. However, with the advent of war in 1914 and your death two years later, the empire that you had so carefuly crafted collapsed, but your legacy lives on today.[NEWLINE][NEWLINE]Oh strong and mighty Kaiser Franz Joseph, your former realm needs you to reassume control. Can you creat a new state to empower your people's will? Can you fend off all enemies of the state to preserve the peace? Can you build a civilisation to stand the test of time?</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CIV5_TCM_AUSTRIA_HUNGARY_TITLE">
+			<Text>Austria-Hungary</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV5_TCM_AUSTRIA_HUNGARY_HEADING_1">
+			<Text>History</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV5_TCM_AUSTRIA_HUNGARY_TEXT_1">
+			<Text>Austria-Hungary was a state in central Europe that aimed to continue the Habsburg Empire in this new form. Owing to the vast amount of cultures within it, Austria-Hungary was often unstable politically, and had ethnic infighting for much of its existence. Founded as a result of the Compromise of 1867, unity in the region was fragile. Austria and Hungary remained distinct entities within the state, each having their own passports despite being legally part of the same country. The union was far more a personal monarchical union than a full-scale political one, as most regions had a significant degree of autonomy, with centralised matters only being to do with defence and the like. Throughout the 19th century, Austria-Hungary prospered, as a cultural capital of the world. However, due to the close alliance with the upstart German Empire, Austria-Hungary found itself isolated from many other countries around it. In the south, the Serbs were desperate to regain lands incorporated into Austria-Hungary, despite them having only got independence a few years beforehand. As an ally of Russia, Serbia was able to push these claims. In 1914, Austria-Hungary sent an ultimatum to Serbia, stating that if they did not agree with all of the points, then they would be in a state of war. The points were so power-taking that the Austro-Hungarian Empire did not think they could possibly agree, thus giving them a casus belli; however, much to their surprise and disappointment, the Serbs agreed with everything aside from one clause in point six of the ultimatum. Angered, Austria-Hungary invaded anyway. However, with incredibly outdated military not ready to even fight against the upstart Serbian nation, Austria-Hungary succumed to its weakness in having too many ethnicities held in the one state against their will. Though Austria tried to incorporate itself into the remnants of the German Empire, the newfound League of Nations denied this, instead splitting Central Europe into more or less what it is today.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_01">
+			<Text>Vienna</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_02">
+			<Text>Budapest</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_03">
+			<Text>Prague</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_04">
+			<Text>Lemberg</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_05">
+			<Text>Pressburg</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_06">
+			<Text>Graz</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_07">
+			<Text>Krakow</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_08">
+			<Text>Triest</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_09">
+			<Text>Szeged</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_10">
+			<Text>Salzburg</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_11">
+			<Text>Brunn</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_12">
+			<Text>Linz</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_13">
+			<Text>Agram</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_14">
+			<Text>Innsbruck</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_15">
+			<Text>Kolozsvar</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_16">
+			<Text>Olmutz</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_17">
+			<Text>Tarnopol</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_18">
+			<Text>Laibach</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_19">
+			<Text>Veszprem</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_20">
+			<Text>Debrecen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_21">
+			<Text>Klagenfurt</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_22">
+			<Text>Budweis</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_23">
+			<Text>Miskolc</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_24">
+			<Text>Pecs</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_25">
+			<Text>Drohobycz</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_26">
+			<Text>Pilsen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_27">
+			<Text>Temesvar</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_28">
+			<Text>Tschernowitz</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_29">
+			<Text>Split</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_30">
+			<Text>Csongrad</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_31">
+			<Text>Rijeka</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_32">
+			<Text>Teschen</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_33">
+			<Text>Zara</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_34">
+			<Text>Tarnow</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_35">
+			<Text>Sopron</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_36">
+			<Text>Reichenberg</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_37">
+			<Text>Komarom</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CITY_NAME_TCM_AUSTRIA_HUNGARY_38">
+			<Text>Sarajevo</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING_1">
+			<Text>Welcome to the Austro-Hungarian Crownlands, my friend. Would you care for some culture? Allow me to introduce it to you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING_2">
+			<Text>I, Franz Joseph, Emperor of Austria-Hungary, bid you welcome to my lands. Care for a look around? The mountains are lovely here...</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED_1">
+			<Text>Damned fool! You have wiped out countless people and put them under your ever-opressing rule. At least they're united.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED_2">
+			<Text>How this day came about I do not know. Though that smirk shall no longer be on your face when the empire strikes back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR_1">
+			<Text>Prepare to get crushed by Austria-Hungary and her allies! This will be over by Christmas, I tell you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR_2">
+			<Text>I just wanted to say how much of a mess your empire's looking. Oh, and we declare war on you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED_1">
+			<Text>Ha! You really think you're a match for us, let alone our friends? This should be quick.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED_2">
+			<Text>This should be fun. Several nations backing one cause is as good as our victory.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_0">
+			<Text>Felix</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_1">
+			<Text>Bence</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_2">
+			<Text>Jakub</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_3">
+			<Text>Sivejik</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_4">
+			<Text>Jan</Text>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_5">
+			<Text>Anna</Text>
+			<Gender>feminine</Gender>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_6">
+			<Text>Sophia</Text>
+			<Gender>feminine</Gender>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_7">
+			<Text>Adele</Text>
+			<Gender>feminine</Gender>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_8">
+			<Text>Kristina</Text>
+			<Gender>feminine</Gender>
+		</Row>
+		<Row Tag="TXT_KEY_SPY_NAME_TCM_AUSTRIA_HUNGARY_9">
+			<Text>Julia</Text>
+			<Gender>feminine</Gender>
+		</Row>
+
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_DESC">
+			<Text>Franz Joseph II</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_LIVED">
+			<Text>1830 - 1916 AD</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_NAME">
+			<Text>Franz Joseph</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_SUBTITLE">
+			<Text>Leader of Austria-Hungary</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_TITLES_1">
+			<Text>Emperor of Austria</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_TITLES_2">
+			<Text>King of Hungary</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_HEADING_1">
+			<Text>History</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_TEXT_1">
+			<Text>Kaiser Franz Joseph I was the sole monarch of Austria-Hungary for most of its history, from his ascension to the throne in 1848 to his death in the dire years of the First World War. Always aiming to consolidate his power, Franz Joseph soon saw that many people under the Austro-Hungarian banner were unhappy with this nationality, something he sought out to put an end to. With the vast amount of ethnic groups within Austria-Hungary, Franz Joseph aimed to unite them all and go forwards as one unified nation. Throughout the years, he saw Austria-Hungary retain its fragile position in Central Europe, though the lack of progress lead to outdated technology, leaving the military large, but almost obsolete. Towards the end of his reign, Franz Joseph entered a military alliance with Wilhelm II of Germany, the Central Powers. In 1914, a Serbian nationalist group, the Black Hand, assassinated Franz Ferdinand, Franz Joseph’s heir to the throne of Austria-Hungary. Angered by this, Franz Joseph declared war on Serbia, triggering a complex system of alliances that ultimately started the First World War. With the army in shambles, Franz Joseph found himself losing time after time to the upstart Serbians, and with his death two years into this conflict, the state he had so carefully crafted was doomed for destruction.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_UNIT_TCM_GRENZER">
+			<Text>Grenzer</Text>
+		</Row>
+		<Row Tag="TXT_KEY_UNIT_HELP_TCM_GRENZER">
+			<Text>An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_UNIT_TCM_GRENZER_STRATEGY">
+			<Text>Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIVILOPEDIA_UNITS_TCM_GRENZER_TEXT">
+			<Text>Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.</Text>
+		</Row>
+		
+		<Row Tag="TXT_KEY_BUILDING_TCM_CONCERT_HALL">
+			<Text>Concert Hall</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_TCM_CONCERT_HALL_HELP">
+			<Text>When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_BUILDING_TCM_CONCERT_HALL_STRATEGY">
+			<Text>Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_CIV5_TCM_CONCERT_HALL_TEXT">
+			<Text>Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH">
+			<Text>Franz Joseph</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT">
+			<Text>Crownlands</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY">
+			<Text>Building a courthouse triggers a We Love The King Day in all cities. During We Love The King Day, [ICON_GREAT_PEOPLE] Great Person generation is increased.</Text>
+		</Row>
+
+		<!-- Unique Cultural Influence -->
+		<Row Tag="TXT_KEY_GENERIC_TCM_AUSTRIA_HUNGARY_INFLUENTIAL_ON_AI_1">
+			<Text>Our people are now buying your Wiener schnitzels and studying your Psychoanalysis. I worry the rest of the world will also succumb to the influence of your culture.</Text>
+		</Row>
+
+		<!-- Ratify the Austro-Hungarian Compromise. -->
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_COMPROMISE">
+			<Text>Ratify the Austro-Hungarian Compromise.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_COMPROMISE_DESC">
+			<Text>
+				The age of revolutions has come, and with it a rising tide of nationalisms throughout the world. It is urgent that we address the demands of our many peoples for greater autonomy and honour their rightful place in our Empire, under the Imperial Crown.[NEWLINE]
+				[NEWLINE]Requirement/Restrictions:
+				[NEWLINE][ICON_BULLET]Player must be Austria-Hungary (Franz Joseph)
+				[NEWLINE][ICON_BULLET]Player must have at least two cities
+				[NEWLINE][ICON_BULLET]May only be enacted from the beginning of the Industrial Era
+				[NEWLINE][ICON_BULLET]May only be enacted once
+				[NEWLINE]Costs:
+				[NEWLINE][ICON_BULLET]Costs 2 [ICON_MAGISTRATES] Magistrates
+				[NEWLINE][ICON_BULLET]Costs {1_Culture} [ICON_CULTURE] Culture
+				[NEWLINE]Rewards:
+				[NEWLINE][ICON_BULLET]Cities in the empire are equally divided to receive either the "Cisleithania" or "Transleithania" National Wonder, that boost Great People generation and increase Happiness respectively
+			</Text>
+		</Row>
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_COMPROMISE_ENACTED_DESC">
+			<Text>
+				We have increased the autonomy of the many different peoples living within our Empire so that they may be ever loyal to the Crown.[NEWLINE]
+				[NEWLINE]Rewards:
+				[NEWLINE][ICON_BULLET]Cities in the empire are equally divided to receive either the "Cisleithania" or "Transleithania" National Wonder, that boost Great People generation and increase Happiness respectively
+			</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_DUMMY1">
+			<Text>Cisleithania</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_HELP1">
+			<Text>+15% [ICON_GREAT_PEOPLE] Great Person generation</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_DUMMY2">
+			<Text>Transleithania</Text>
+		</Row>
+		
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_ESTABLISH_GRENZ">
+			<Text>Establish the Grenz Infantry</Text>
+		</Row>
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_ESTABLISH_GRENZ_DESC">
+			<Text>
+				The borders of our empire are vulnerable, and so we need a mobile force that can effectively guard it and react to any threat. We should draft the men from local populations, to ensure their will to fight for their homeland.[NEWLINE]
+				[NEWLINE]Requirement/Restrictions:
+				[NEWLINE][ICON_BULLET]Player must be Austria-Hungary (Franz Joseph)
+				[NEWLINE][ICON_BULLET]May only be enacted from the beginning of the Industrial Era
+				[NEWLINE][ICON_BULLET]May only be enacted once
+				[NEWLINE]Costs:
+				[NEWLINE][ICON_BULLET]Costs 1 [ICON_MAGISTRATES] Magistrate
+				[NEWLINE][ICON_BULLET]Costs 1 Citizen from each city
+				[NEWLINE]Rewards:
+				[NEWLINE][ICON_BULLET]A land military unit will be generated in each city
+			</Text>
+		</Row>
+		<Row Tag="TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_ESTABLISH_GRENZ_ENACTED_DESC">
+			<Text>
+				With the establishment of the Grenz Infantry, the frontiers of our empire are secured against any threat.[NEWLINE]
+				[NEWLINE]Rewards:
+				[NEWLINE][ICON_BULLET]A land military unit will be generated in each city
+			</Text>
+		</Row>
+
+		<!-- An Imperial Marriage -->
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE">
+			<Text>An Imperial Marriage</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_DESC">
+			<Text>
+				We are in the prime of our life, and in need of a suitable consort. Our Mother arranged a meeting with the daughters of our royal cousin from the neighbouring realm. The two of them have arrived in our empire, accompanied by their travelling court and officials. To whom shall we propose?[NEWLINE]
+			</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_1">
+			<Text>The older Nene, this should please our Mother</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_RESULT_1">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]{1_Culture} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_RESULT_1_NOTIFICATION">
+			<Text>We have proposed to Helene, pleasing our Mother.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_1">
+			<Text>Franz Joseph has chosen Helene to marry, strengthening his relations to the House of Wittelsbach.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_2">
+			<Text>The younger Sissi, she cannot be resisted</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_RESULT_2">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Every city enters a We Love the King Day[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_MARRIAGE_OUTCOME_RESULT_2_NOTIFICATION">
+			<Text>We have proposed to Helene, displeasing our Mother.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_MARRIAGE_2">
+			<Text>Franz Joseph has chosen Elisabeth to marry, strengthening his relations to the House of Wittelsbach.</Text>
+		</Row>
+
+		<!-- A Brilliant Inventor -->
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR">
+			<Text>A Brilliant Inventor</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_DESC">
+			<Text>
+				A subject of ours from the border province of Galicia, has been obtaining an unusual number of patents on his inventions. He seems to be coming up with new ideas and machines at a steady pace, almost effortlessly. We should reward one of our most creative men and promote one of his technologies - this will elevate the standing and prestige of our Empire. Which one should we choose?[NEWLINE]
+			</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_1">
+			<Text>Colour photography</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_1">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Receive {1_Gold} [ICON_GOLD] Gold[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {2_Gold} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_1_NOTIFICATION">
+			<Text>We have promoted the inventor's new colour photography techniques.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_1">
+			<Text>A creative Galician inventor has registered a new colour photography patent.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_2">
+			<Text>Ballistic vest</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_2">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]All gun units receive +15 Experience[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {1_Gold} [ICON_GOLD] Gold[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_2_NOTIFICATION">
+			<Text>We have promoted the inventor's new ballistic vest technology.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_2">
+			<Text>A creative Galician inventor has registered a new ballistic vest patent.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_3">
+			<Text>Sound recording device</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_3">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Receive a free Broadcast Tower in the Capital[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {1_Gold} [ICON_GOLD] Gold[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_3_NOTIFICATION">
+			<Text>We have promoted the inventor's new sound recording technology.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_3">
+			<Text>A creative Galician inventor has registered a new sound recording patent.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_4">
+			<Text>I heard he made a new weaving machine, can I take a look?</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_4">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Receive a free Great Work of Art[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {1_Gold} [ICON_GOLD] Gold[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_4_NOTIFICATION">
+			<Text>We have promoted the inventor's new weaving machine.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_4">
+			<Text>A creative Galician inventor has registered a new weaving machine patent.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_5">
+			<Text>I have no time for such nonsense</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_5">
+			<Text>[ICON_BULLET][COLOR_NEGATIVE_TEXT]Nothing[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_INVENTOR_OUTCOME_RESULT_5_NOTIFICATION">
+			<Text>We have ignored the young inventor and his little toys.</Text>
+		</Row>
+
+		<!-- Assassination Attempt -->
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION">
+			<Text>Assassination attempt!</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_DESC">
+			<Text>
+				A Hungarian craftsman, disconcerted about the policies of our Empire, made a bold move and, in broad daylight, assaulted us with a knife. He was unsuccessful, but managed to wound us in the neck. He has been arrested and is awaiting trial. What shall we do?[NEWLINE]
+			</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_1">
+			<Text>Execute him</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_1">
+			<Text>[ICON_BULLET][COLOR_NEGATIVE_TEXT]Nothing[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_1_NOTIFICATION">
+			<Text>We have executed the traitor who made an attempt against our life.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_1">
+			<Text>Franz Joseph has survived an assassination attempt and executed the traitor.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_2">
+			<Text>Pardon him</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_2">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Receives +3 [ICON_HAPPINESS_1] Happiness in the Capital[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {1_Culture} [ICON_CULTURE] Culture[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_2_NOTIFICATION">
+			<Text>We have pardoned the traitor who made an attempt against our life.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_2">
+			<Text>Franz Joseph has survived an assassination attempt but pardoned the traitor.</Text>
+		</Row>
+
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_3">
+			<Text>Thank Providence for saving us!</Text>
+		</Row>
+		<Row Tag="TXT_KEY_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_3">
+			<Text>[ICON_BULLET][COLOR_POSITIVE_TEXT]Free Cathedral in the Capital[ENDCOLOR][NEWLINE][ICON_BULLET][COLOR_NEGATIVE_TEXT]Costs {1_Gold} [ICON_GOLD] Gold[ENDCOLOR]</Text>
+		</Row>
+		<Row Tag="TXT_KEY_TCM_AUSTRIA_HUNGARY_ASSASSINATION_OUTCOME_RESULT_3_NOTIFICATION">
+			<Text>A splendorous Cathedral has been built on the spot that the crime was committed.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_WORLD_EVENT_TCM_AUSTRIA_HUNGARY_ASSASSINATION_3">
+			<Text>After an assassination attempt on the emperor's life, a cathedral has been built on the spot that the crime was committed.</Text>
+		</Row>
+	</Language_en_US>
+</GameData>
