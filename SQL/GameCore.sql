@@ -124,6 +124,7 @@ VALUES		('PLAYERCOLOR_TCM_AUSTRIA_HUNGARY',	'COLOR_PLAYER_TCM_AUSTRIA_HUNGARY_IC
 --==========================================================================================================================	
 --==========================================================================================================================	
 --==========================================================================================================================	
+-- A FAIRE
 -- Leaders
 --==========================================================================================================================			
 INSERT INTO Leaders 
@@ -200,6 +201,7 @@ INSERT INTO Leader_Traits
 			(LeaderType, 					TraitType)
 VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY');
 --==========================================================================================================================	
+-- A FAIRE
 -- Traits
 --==========================================================================================================================	
 INSERT INTO Traits 
@@ -222,6 +224,7 @@ INSERT INTO Audio_2DSounds
 VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'GAME_MUSIC', 	80, 		80, 		1, 			0),
 			('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 		'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 	'GAME_MUSIC', 	80, 		80, 		1,			0);
 --==========================================================================================================================	
+-- A FAIRE
 -- BuildingClasses
 --==========================================================================================================================	
 INSERT INTO BuildingClasses 	
@@ -229,6 +232,7 @@ INSERT INTO BuildingClasses
 VALUES		('BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	'BUILDING_TCM_GREAT_PERSON_GEN', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	-1),
 			('BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	null,								'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	1);
 --==========================================================================================================================	
+-- A FAIRE
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
@@ -257,6 +261,7 @@ VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_HAPPINESS',		15);
 --==========================================================================================================================
 --==========================================================================================================================	
+-- A FAIRE
 -- Units
 --==========================================================================================================================		
 INSERT INTO Units 	
@@ -293,6 +298,7 @@ VALUES		('UNIT_TCM_GRENZER', 	'FLAVOR_OFFENSE',		12),
 --==========================================================================================================================	
 --==========================================================================================================================
 --==========================================================================================================================	
+-- A FAIRE
 -- Diplomacy_Responses
 --==========================================================================================================================	
 INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_FIRST_GREETING', 'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING%','1');
@@ -306,4 +312,4 @@ INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUE
 ------------------------------
 INSERT INTO Policies
         (Type,                          Description)
-VALUES  ('POLICY_TCM_AUSTRIA_HUNGARY',  'TXT_KEY_DECISIONS_TCM_AUSTRIA_HUNGARY_COMPROMISE');
+VALUES  ('POLICY_TCM_AUSTRIA_HUNGARY',  'Ratify the Austro-Hungarian Compromise.');
