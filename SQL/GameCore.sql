@@ -201,12 +201,11 @@ INSERT INTO Leader_Traits
 			(LeaderType, 					TraitType)
 VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY');
 --==========================================================================================================================	
--- A FAIRE
 -- Traits
 --==========================================================================================================================	
 INSERT INTO Traits 
-			(Type, 										Description, 										ShortDescription)
-VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT');
+			(Type, 										Description, 																																					ShortDescription)
+VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'Building a courthouse triggers a We Love The King Day in all cities. During We Love The King Day, [ICON_GREAT_PEOPLE] Great Person generation is increased.', 	'Crownlands');
 --==========================================================================================================================
 -- AUDIO
 --==========================================================================================================================	
@@ -224,28 +223,26 @@ INSERT INTO Audio_2DSounds
 VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'GAME_MUSIC', 	80, 		80, 		1, 			0),
 			('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 		'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 	'GAME_MUSIC', 	80, 		80, 		1,			0);
 --==========================================================================================================================	
--- A FAIRE
 -- BuildingClasses
 --==========================================================================================================================	
 INSERT INTO BuildingClasses 	
-			(Type, 						 			DefaultBuilding, 					Description,											MaxPlayerInstances)
-VALUES		('BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	'BUILDING_TCM_GREAT_PERSON_GEN', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	-1),
-			('BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	null,								'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	1);
+			(Type, 						 			DefaultBuilding, 					Description,	MaxPlayerInstances)
+VALUES		('BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	'BUILDING_TCM_GREAT_PERSON_GEN', 	'Crownlands',	-1),
+			('BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	null,								'Crownlands',	1);
 --==========================================================================================================================	
--- A FAIRE
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
-			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,							Help,										Civilopedia,							Strategy,										ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,						PortraitIndex)
-SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	('TXT_KEY_BUILDING_TCM_CONCERT_HALL'),	('TXT_KEY_BUILDING_TCM_CONCERT_HALL_HELP'),	('TXT_KEY_CIV5_TCM_CONCERT_HALL_TEXT'),	('TXT_KEY_BUILDING_TCM_CONCERT_HALL_STRATEGY'),	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
+			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,						PortraitIndex)
+SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Concert Hall',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
 FROM Buildings WHERE Type = 'BUILDING_OPERA_HOUSE';		
 
 INSERT INTO Buildings 	
-			(Type, 												BuildingClass, 							UnmoddedHappiness,  Happiness,  GreatPeopleRateModifier, GreatWorkCount, Cost, FaithCost, NukeImmune,   ConquestProb,  PrereqTech,	Description, 												Help,													PortraitIndex, 	IconAtlas)
-VALUES		('BUILDING_TCM_GREAT_PERSON_GEN',					'BUILDINGCLASS_TCM_GREAT_PERSON_GEN',	0,					0,		    25,						 -1, 			-1,    -1, 		  1,		    0,				NULL, 		'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	0, 				'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_1',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	0,					0,			15,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_DUMMY1', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_HELP1',	4, 				'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_2',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY',	0,					2,			0,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_DUMMY2', 	NULL,													5, 				'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_HAPPINESS_DUMMY',	'BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	1,					0,			0,						 -1, 			-1,    -1, 		  1,			0,				NULL, 		'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT', 	'TXT_KEY_TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY_SHORT',	0, 				'TCM_AUSTRIA_HUNGARY_ATLAS');
+			(Type, 												BuildingClass, 							UnmoddedHappiness,  Happiness,  GreatPeopleRateModifier, GreatWorkCount, Cost, FaithCost, NukeImmune,   ConquestProb,  PrereqTech,	Description, 	Help,			PortraitIndex, 	IconAtlas)
+VALUES		('BUILDING_TCM_GREAT_PERSON_GEN',					'BUILDINGCLASS_TCM_GREAT_PERSON_GEN',	0,					0,		    25,						 -1, 			-1,    -1, 		  1,		    0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
+			('BUILDING_TCM_AUSTRIA_HUNGARY_1',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	0,					0,			15,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Cisleithania', '+15% [ICON_GREAT_PEOPLE] Great Person generation',	4,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
+			('BUILDING_TCM_AUSTRIA_HUNGARY_2',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY',	0,					2,			0,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Transleithania', 	NULL,	5,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
+			('BUILDING_TCM_AUSTRIA_HUNGARY_HAPPINESS_DUMMY',	'BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	1,					0,			0,						 -1, 			-1,    -1, 		  1,			0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS');
 --==========================================================================================================================	
 -- Building_YieldChanges
 --==========================================================================================================================					
@@ -261,12 +258,11 @@ VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_HAPPINESS',		15);
 --==========================================================================================================================
 --==========================================================================================================================	
--- A FAIRE
 -- Units
 --==========================================================================================================================		
 INSERT INTO Units 	
-			(Class, 	Type, 					PrereqTech, 		 Combat, Cost, ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 					Civilopedia, 									 Strategy, 								Help, 							 MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
-SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_STEAM_POWER'), 47, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, ('TXT_KEY_UNIT_TCM_GRENZER'), ('TXT_KEY_CIVILOPEDIA_UNITS_TCM_GRENZER_TEXT'), ('TXT_KEY_UNIT_TCM_GRENZER_STRATEGY'), ('TXT_KEY_UNIT_HELP_TCM_GRENZER'), MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
+			(Class, 	Type, 					PrereqTech, 		 Combat, Cost, ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 	Civilopedia, 																																																																																																																																		Strategy, 																														Help, 																																		MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
+SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_STEAM_POWER'), 47, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
 FROM Units WHERE (Type = 'UNIT_GREAT_WAR_INFANTRY');
 --==========================================================================================================================	
 -- UnitGameplay2DScripts
