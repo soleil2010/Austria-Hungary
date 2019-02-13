@@ -2,7 +2,7 @@
 <!-- Created by ModBuddy on 2/7/2019 8:31:53 PM -->
 <GameData>
 	<Language_en_US>
-  <!-- Reponses diplomatique -->
+		<!-- Reponses diplomatique -->
 		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING_1">
 			<Text>Welcome to the Austro-Hungarian Crownlands, my friend. Would you care for some culture? Allow me to introduce it to you.</Text>
 		</Row>
@@ -27,10 +27,5 @@
 		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED_2">
 			<Text>This should be fun. Several nations backing one cause is as good as our victory.</Text>
 		</Row>
- 
-  <!-- TODO: Insert table data example here.-->
-  
-  <!-- Enter your Game Data here. -->
-
 	</Language_en_US>
 </GameData>
