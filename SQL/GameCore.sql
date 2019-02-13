@@ -295,10 +295,10 @@ VALUES		('UNIT_TCM_GRENZER', 	'FLAVOR_OFFENSE',		12),
 -- A FAIRE
 -- Diplomacy_Responses
 --==========================================================================================================================	
-INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_FIRST_GREETING', 'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING%','1');
-INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_DEFEATED',		'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED%','1'),
-INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_DECLARE_WAR',	'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR%','1'),
-INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_ATTACKED',		'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED%','1');
+INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_FIRST_GREETING', 'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING%',500);
+INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_DEFEATED',		'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED%',500);
+INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_DECLARE_WAR',	'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR%',500);
+INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_ATTACKED',		'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED%',500);
 --==========================================================================================================================	
 --==========================================================================================================================	
 ------------------------------

@@ -25,12 +25,7 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/GameCore.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
-        <FileName>SQL/Test_Florian.sql</FileName>
+        <FileName>SQL/ArtDef.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -40,7 +35,12 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/ArtDef.sql</FileName>
+        <FileName>SQL/GameCore.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/Test_Florian.sql</FileName>
       </Action>
     </ModActions>
     <ModDependencies>
