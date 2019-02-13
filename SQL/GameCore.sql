@@ -80,7 +80,7 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'LEADER_TCM_FRANZ_JOSEPH');
 --==========================================================================================================================	
 INSERT INTO Civilization_UnitClassOverrides 
 			(CivilizationType, 						UnitClassType, 						UnitType)
-VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'UNITCLASS_GREAT_WAR_INFANTRY', 	'UNIT_TCM_GRENZER');
+VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'UNITCLASS_RIFLEMAN',		'UNIT_TCM_GRENZER');
 --==========================================================================================================================
 -- Civilization_BuildingClassOverrides
 --==========================================================================================================================	
@@ -128,8 +128,8 @@ VALUES		('PLAYERCOLOR_TCM_AUSTRIA_HUNGARY',	'COLOR_PLAYER_TCM_AUSTRIA_HUNGARY_IC
 -- Leaders
 --==========================================================================================================================			
 INSERT INTO Leaders 
-			(Type, 							Description, 						Civilopedia, 									CivilopediaTag, 						ArtDefineTag, 					VictoryCompetitiveness, WonderCompetitiveness, 	MinorCivCompetitiveness, 	Boldness, 	DiploBalance, 	WarmongerHate, 	DenounceWillingness, DoFWillingness, Loyalty, 	Neediness, 	Forgiveness, Chattiness, Meanness, 	IconAtlas, 						PortraitIndex)
-VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH', 	'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA_TEXT',  'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA', 'TCM_FRANZ_JOSEPH_SCENE.xml',	8, 						7, 						9, 							10, 		5, 				3, 				6, 					 4, 			 8, 		3, 			4, 			 8, 			8, 		'TCM_AUSTRIA_HUNGARY_ATLAS', 	1);
+			(Type, 							Description, 						Civilopedia, 																																																																																																																																																																																																																																																																																																																																					CivilopediaTag, 						ArtDefineTag, 					VictoryCompetitiveness, WonderCompetitiveness, 	MinorCivCompetitiveness, 	Boldness, 	DiploBalance, 	WarmongerHate, 	DenounceWillingness, DoFWillingness, Loyalty, 	Neediness, 	Forgiveness, Chattiness, Meanness, 	IconAtlas, 						PortraitIndex)
+VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'Franz Joseph I', 	'Kaiser Franz Joseph I was the sole monarch of Austria-Hungary for most of its history, from his ascension to the throne in 1848 to his death in the dire years of the First World War. Always aiming to consolidate his power, Franz Joseph soon saw that many people under the Austro-Hungarian banner were unhappy with this nationality, something he sought out to put an end to. With the vast amount of ethnic groups within Austria-Hungary, Franz Joseph aimed to unite them all and go forwards as one unified nation. Throughout the years, he saw Austria-Hungary retain its fragile position in Central Europe, though the lack of progress lead to outdated technology, leaving the military large, but almost obsolete. Towards the end of his reign, Franz Joseph entered a military alliance with Wilhelm II of Germany, the Central Powers. In 1914, a Serbian nationalist group, the Black Hand, assassinated Franz Ferdinand, Franz Joseph’s heir to the throne of Austria-Hungary. Angered by this, Franz Joseph declared war on Serbia, triggering a complex system of alliances that ultimately started the First World War. With the army in shambles, Franz Joseph found himself losing time after time to the upstart Serbians, and with his death two years into this conflict, the state he had so carefully crafted was doomed for destruction.',  'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_PEDIA', 'TCM_FRANZ_JOSEPH_SCENE.xml',	8, 						7, 						9, 							10, 		5, 				3, 				6, 					 4, 			 8, 		3, 			4, 			 8, 			8, 		'TCM_AUSTRIA_HUNGARY_ATLAS', 	1);
 --==========================================================================================================================	
 -- Leader_MajorCivApproachBiases
 --==========================================================================================================================						
@@ -262,28 +262,28 @@ VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15),
 --==========================================================================================================================		
 INSERT INTO Units 	
 			(Class, 	Type, 					PrereqTech, 		 Combat, Cost, ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 	Civilopedia, 																																																																																																																																		Strategy, 																														Help, 																																		MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
-SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_STEAM_POWER'), 47, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
-FROM Units WHERE (Type = 'UNIT_GREAT_WAR_INFANTRY');
+SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_RIFLING'),		34, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
+FROM Units WHERE (Type = 'UNIT_RIFLEMAN');
 --==========================================================================================================================	
 -- UnitGameplay2DScripts
 --==========================================================================================================================		
 INSERT INTO UnitGameplay2DScripts 	
 			(UnitType, 				SelectionSound, FirstSelectionSound)
 SELECT		('UNIT_TCM_GRENZER'), 	SelectionSound, FirstSelectionSound
-FROM UnitGameplay2DScripts WHERE (UnitType = 'UNIT_GREAT_WAR_INFANTRY');		
+FROM UnitGameplay2DScripts WHERE (UnitType = 'UNIT_RIFLEMAN');		
 --==========================================================================================================================	
 -- Unit_AITypes
 --==========================================================================================================================		
 INSERT INTO Unit_AITypes 	
 			(UnitType, 				UnitAIType)
 SELECT		('UNIT_TCM_GRENZER'), 	UnitAIType
-FROM Unit_AITypes WHERE (UnitType = 'UNIT_GREAT_WAR_INFANTRY');	
+FROM Unit_AITypes WHERE (UnitType = 'UNIT_RIFLEMAN');	
 --==========================================================================================================================	
 -- Unit_ClassUpgrades
 --==========================================================================================================================		
 INSERT INTO Unit_ClassUpgrades 	
 			(UnitType, 				UnitClassType)
-VALUES		('UNIT_TCM_GRENZER', 	'UNITCLASS_INFANTRY');
+VALUES		('UNIT_TCM_GRENZER', 	'UNITCLASS_GREAT_WAR_INFANTRY');
 --==========================================================================================================================	
 -- Unit_Flavors
 --==========================================================================================================================		
@@ -291,8 +291,6 @@ INSERT INTO Unit_Flavors
 			(UnitType, 				FlavorType,				Flavor)
 VALUES		('UNIT_TCM_GRENZER', 	'FLAVOR_OFFENSE',		12),
 			('UNIT_TCM_GRENZER', 	'FLAVOR_DEFENSE',		12);
---==========================================================================================================================	
---==========================================================================================================================
 --==========================================================================================================================	
 -- A FAIRE
 -- Diplomacy_Responses
@@ -309,3 +307,5 @@ INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUE
 INSERT INTO Policies
         (Type,                          Description)
 VALUES  ('POLICY_TCM_AUSTRIA_HUNGARY',  'Ratify the Austro-Hungarian Compromise.');
+
+
