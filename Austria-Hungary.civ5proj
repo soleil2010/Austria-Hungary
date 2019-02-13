@@ -21,6 +21,30 @@
     <AssemblyName>Austria-Hungary</AssemblyName>
     <RootNamespace>Austria-Hungary</RootNamespace>
     <ModReferences />
+    <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/GameCore.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/Test_Florian.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>XML/GameText.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/ArtDef.sql</FileName>
+      </Action>
+    </ModActions>
+    <ModDependencies>
+    </ModDependencies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -119,6 +143,10 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
+    <Content Include="Art\DDS\TCM_FRANZ_JOSEPH_SCENE.xml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
     <Content Include="Art\DDS\TCM_GRENZER_FLAG_32.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
@@ -141,9 +169,17 @@
     </Content>
     <Content Include="Art\Music\tcmFranzJosephPeace.mp3">
       <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
+      <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Art\Music\tcmFranzJosephWar.mp3">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\ArtDef.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\Test_Florian.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
