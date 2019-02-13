@@ -30,11 +30,6 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/Test_Florian.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>XML/GameText.xml</FileName>
       </Action>
       <Action>
@@ -176,6 +171,10 @@
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="SQL\ArtDef.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\test_diogo.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

@@ -308,4 +308,31 @@ INSERT INTO Policies
         (Type,                          Description)
 VALUES  ('POLICY_TCM_AUSTRIA_HUNGARY',  'Ratify the Austro-Hungarian Compromise.');
 
+--==========================================================================================================================
+--Promotion	
+--==========================================================================================================================
 
+INSERT INTO UnitPromotions 
+		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
+VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More Promotion = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
+		('PROMOTION_GRENZCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_ATTRIBUTES', 'Grenzschutz');
+
+
+--==========================================================================================================================
+-- FREE PROMOTION:  GRENZER to RIFLEMAN
+--==========================================================================================================================
+
+INSERT INTO Unit_FreePromotions
+		(UnitType, 					PromotionType)
+SELECT	'UNIT_TCM_GRENZER',			PromotionType
+FROM Unit_FreePromotions WHERE UnitType = 'UNIT_RIFLEMAN';
+
+--==========================================================================================================================
+-- FREE PROMOTION:  What's promotions Grenzer can have 
+--==========================================================================================================================
+
+INSERT INTO Unit_FreePromotions 
+		(UnitType, 				PromotionType)
+VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_VIRIBUS_UNITIS'),
+		('UNIT_TCM_GRENZER', 	'PROMOTION_GRENZCHUTZ'),
+		('UNIT_TCM_GRENZER', 	'PROMOTION_DRILL_1');
