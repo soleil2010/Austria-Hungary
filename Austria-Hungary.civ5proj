@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <ProjectGuid>{d1727c70-535a-4f1e-824a-2245be420cbc}</ProjectGuid>
-    <Name>TCM's Austria-Hungary Empire</Name>
+    <Name>TCM's Austria-Hungary Empire(1)</Name>
     <Guid>c3b136ab-bb13-460e-ab97-801d9dd8bcd6</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Alpha</Stability>
@@ -40,6 +40,8 @@
     </ModActions>
     <ModDependencies>
     </ModDependencies>
+    <ReloadUnitSystem>true</ReloadUnitSystem>
+    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>

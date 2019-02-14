@@ -85,8 +85,8 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'UNITCLASS_RIFLEMAN',		'UNIT_TCM_G
 -- Civilization_BuildingClassOverrides
 --==========================================================================================================================	
 INSERT INTO Civilization_BuildingClassOverrides 
-			(CivilizationType, 						BuildingClassType, 				BuildingType)
-VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_OPERA_HOUSE', 	'BUILDING_TCM_CONCERT_HALL');
+			(CivilizationType, 						BuildingClassType, 					BuildingType)
+VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_NATIONAL_COLLEGE', 	'BUILDING_TCM_CONCERT_HALL');
 --==========================================================================================================================
 -- Civilization_Religions
 --==========================================================================================================================	
@@ -103,11 +103,11 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Felix'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Jakub'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Anna'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Jan'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Adele'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Richthofen'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Sophia'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Sivejik'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Bence'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Julia');
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Heinrich'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Manfred'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'Eigner');
 --==========================================================================================================================	
 -- Colors
 --==========================================================================================================================			
@@ -124,7 +124,6 @@ VALUES		('PLAYERCOLOR_TCM_AUSTRIA_HUNGARY',	'COLOR_PLAYER_TCM_AUSTRIA_HUNGARY_IC
 --==========================================================================================================================	
 --==========================================================================================================================	
 --==========================================================================================================================	
--- A FAIRE
 -- Leaders
 --==========================================================================================================================			
 INSERT INTO Leaders 
@@ -136,11 +135,11 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'Franz Joseph I', 	'Kaiser Franz Joseph I w
 INSERT INTO Leader_MajorCivApproachBiases 
 			(LeaderType, 					MajorCivApproachType, 				Bias)
 VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_WAR', 			8),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_HOSTILE', 		6),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_HOSTILE', 		7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_DECEPTIVE', 	7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_GUARDED', 		6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_AFRAID', 		2),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_FRIENDLY', 		4),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_FRIENDLY', 		3),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_NEUTRAL', 		7);
 --==========================================================================================================================	
 -- Leader_MajorCivApproachBiases
@@ -157,7 +156,7 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_IGNORE', 		2),
 --==========================================================================================================================						
 INSERT INTO Leader_Flavors 
 			(LeaderType, 					FlavorType, 						Flavor)
-VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_OFFENSE', 					7),
+VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_OFFENSE', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_DEFENSE', 					7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CITY_DEFENSE', 				5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_MILITARY_TRAINING', 		8),
@@ -172,14 +171,14 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_OFFENSE', 					7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_EXPANSION', 				8),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GROWTH', 					6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_TILE_IMPROVEMENT', 			7),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_INFRASTRUCTURE', 			6),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_INFRASTRUCTURE', 			8),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_PRODUCTION', 				7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GOLD', 						6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_SCIENCE', 					5),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CULTURE', 					7),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CULTURE', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_HAPPINESS', 				8),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GREAT_PEOPLE', 				7),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_WONDER', 					7),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GREAT_PEOPLE', 				8),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_WONDER', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_RELIGION', 					6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_DIPLOMACY', 				7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_SPACESHIP', 				4),
@@ -222,47 +221,49 @@ INSERT INTO Audio_2DSounds
 			(ScriptID, 										SoundID, 									SoundType, 		MinVolume, 	MaxVolume,	IsMusic,	Looping)
 VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'GAME_MUSIC', 	80, 		80, 		1, 			0),
 			('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 		'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 	'GAME_MUSIC', 	80, 		80, 		1,			0);
---==========================================================================================================================	
+/*--==========================================================================================================================	
 -- BuildingClasses
 --==========================================================================================================================	
 INSERT INTO BuildingClasses 	
 			(Type, 						 			DefaultBuilding, 					Description,	MaxPlayerInstances)
 VALUES		('BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	'BUILDING_TCM_GREAT_PERSON_GEN', 	'Crownlands',	-1),
 			('BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	null,								'Crownlands',	1);
+*/
 --==========================================================================================================================	
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
 			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,						PortraitIndex)
-SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Concert Hall',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
-FROM Buildings WHERE Type = 'BUILDING_OPERA_HOUSE';		
-
+SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
+FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';		
+/*
 INSERT INTO Buildings 	
 			(Type, 												BuildingClass, 							UnmoddedHappiness,  Happiness,  GreatPeopleRateModifier, GreatWorkCount, Cost, FaithCost, NukeImmune,   ConquestProb,  PrereqTech,	Description, 	Help,			PortraitIndex, 	IconAtlas)
 VALUES		('BUILDING_TCM_GREAT_PERSON_GEN',					'BUILDINGCLASS_TCM_GREAT_PERSON_GEN',	0,					0,		    25,						 -1, 			-1,    -1, 		  1,		    0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
 			('BUILDING_TCM_AUSTRIA_HUNGARY_1',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	0,					0,			15,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Cisleithania', '+15% [ICON_GREAT_PEOPLE] Great Person generation',	4,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
 			('BUILDING_TCM_AUSTRIA_HUNGARY_2',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY',	0,					2,			0,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Transleithania', 	NULL,	5,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
 			('BUILDING_TCM_AUSTRIA_HUNGARY_HAPPINESS_DUMMY',	'BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	1,					0,			0,						 -1, 			-1,    -1, 		  1,			0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS');
+*/
 --==========================================================================================================================	
 -- Building_YieldChanges
 --==========================================================================================================================					
 INSERT INTO Building_YieldChanges 
 			(BuildingType, 					YieldType,				Yield)
-VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		1);
+VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		5);
 --==========================================================================================================================	
 -- Building_Flavors
 --==========================================================================================================================					
 INSERT INTO Building_Flavors 
 			(BuildingType, 					FlavorType,				Flavor)
-VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15),
-			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_HAPPINESS',		15);
+VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
+			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15);
 --==========================================================================================================================
 --==========================================================================================================================	
 -- Units
 --==========================================================================================================================		
 INSERT INTO Units 	
 			(Class, 	Type, 					PrereqTech, 		 Combat, Cost, ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 	Civilopedia, 																																																																																																																																		Strategy, 																														Help, 																																		MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
-SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_RIFLING'),		34, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
+SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_AGRICULTURE'),		34, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
 FROM Units WHERE (Type = 'UNIT_RIFLEMAN');
 --==========================================================================================================================	
 -- UnitGameplay2DScripts
@@ -291,7 +292,76 @@ INSERT INTO Unit_Flavors
 			(UnitType, 				FlavorType,				Flavor)
 VALUES		('UNIT_TCM_GRENZER', 	'FLAVOR_OFFENSE',		12),
 			('UNIT_TCM_GRENZER', 	'FLAVOR_DEFENSE',		12);
---==========================================================================================================================	
+--==========================================================================================================================
+--------------------------------	
+-- UnitPromotions_UnitCombats
+--------------------------------	
+/*INSERT INTO UnitPromotions_UnitCombats
+		(PromotionType, UnitCombatType)
+VALUES	('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_RECON'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_ARCHER'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_MELEE'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_GUN'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_MOUNTED'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_SIEGE'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_ARMOR'),
+		('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_HELICOPTER');
+		*/
+
+
+
+--==========================================================================================================================
+--Promotion	
+--==========================================================================================================================
+
+INSERT INTO UnitPromotions 
+		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
+VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More Promotion = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
+		('PROMOTION_GRENZCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
+
+
+--==========================================================================================================================
+-- FREE PROMOTION:  GRENZER to RIFLEMAN
+--==========================================================================================================================
+
+INSERT INTO Unit_FreePromotions
+		(UnitType, 					PromotionType)
+SELECT	('UNIT_TCM_GRENZER'),			PromotionType
+FROM Unit_FreePromotions WHERE (UnitType = 'UNIT_RIFLEMAN');
+
+INSERT INTO Unit_FreePromotions 
+		(UnitType, 				PromotionType)
+VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_GRENZCHUTZ'),
+		('UNIT_TCM_GRENZER', 	'PROMOTION_DRILL_1');
+
+INSERT INTO Trait_FreePromotionUnitCombats
+		(TraitType, UnitCombatType, PromotionType)
+VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_RECON', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_ARCHER', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_GUN', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_MELEE', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_MOUNTED', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_SIEGE', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_ARMOR', 'PROMOTION_VIRIBUS_UNITIS'),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_HELICOPTER', 'PROMOTION_VIRIBUS_UNITIS');
+
+--=================================
+--Pour test VIRIBUS UNITIS
+--=================================
+INSERT INTO Trait_DomainFreeExperienceModifier 
+		(TraitType, 								DomainType, 	Modifier)
+VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_LAND', 	600),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_SEA', 	600),
+		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_AIR', 	600);
+
+--==========================================================================================================================
+-- Civilization_FreeBuildingClasses
+--==========================================================================================================================		
+INSERT INTO Civilization_FreeBuildingClasses 
+			(CivilizationType, 						BuildingClassType)
+VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_ARMORY');
+	
 -- A FAIRE
 -- Diplomacy_Responses
 --==========================================================================================================================	
@@ -301,38 +371,3 @@ INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUE
 INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_ATTACKED',		'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED%','1');
 --==========================================================================================================================	
 --==========================================================================================================================	
-------------------------------
--- Policies
-------------------------------
-INSERT INTO Policies
-        (Type,                          Description)
-VALUES  ('POLICY_TCM_AUSTRIA_HUNGARY',  'Ratify the Austro-Hungarian Compromise.');
-
---==========================================================================================================================
---Promotion	
---==========================================================================================================================
-
-INSERT INTO UnitPromotions 
-		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
-VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More Promotion = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
-		('PROMOTION_GRENZCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_ATTRIBUTES', 'Grenzschutz');
-
-
---==========================================================================================================================
--- FREE PROMOTION:  GRENZER to RIFLEMAN
---==========================================================================================================================
-
-INSERT INTO Unit_FreePromotions
-		(UnitType, 					PromotionType)
-SELECT	'UNIT_TCM_GRENZER',			PromotionType
-FROM Unit_FreePromotions WHERE UnitType = 'UNIT_RIFLEMAN';
-
---==========================================================================================================================
--- FREE PROMOTION:  What's promotions Grenzer can have 
---==========================================================================================================================
-
-INSERT INTO Unit_FreePromotions 
-		(UnitType, 				PromotionType)
-VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_VIRIBUS_UNITIS'),
-		('UNIT_TCM_GRENZER', 	'PROMOTION_GRENZCHUTZ'),
-		('UNIT_TCM_GRENZER', 	'PROMOTION_DRILL_1');

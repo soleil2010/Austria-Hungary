@@ -1,7 +1,7 @@
 --==================================
 --count promotion
 --==================================
-
+/*
 ALTER TABLE UnitPromotions ADD NumberPromotion SET DEFAULT 0
 
 UPDATE TABLE UnitPromotions
@@ -20,7 +20,7 @@ UPDATE TABLE PROMOTION_VIRIBUS_UNITIS
 --UPDATE Civilization_FreeBuildingClasses
 --SET FreeBuilding = 'BUILDING_BARRACKS',
 --SET FreeBuilding = 'BUILDING_ARMORY';
-
+*/
 
 --==========================================================================================================================
 -- GAZEBO COMMUNITY PATCH
@@ -30,7 +30,7 @@ UPDATE TABLE PROMOTION_VIRIBUS_UNITIS
 CREATE TABLE IF NOT EXISTS COMMUNITY (Type TEXT, Value INTEGER);
 
 --TESTATURE
-
+/*
 --=================================
 --Pour test VIRIBUS UNITIS
 --=================================
@@ -50,7 +50,8 @@ SELECT	'UNIT_PATHFINDER',			PromotionType
 FROM Unit_FreePromotions WHERE UnitType = 'UNIT_SCOUT';
 
 
-
+*/
+/*
 --==========================================================================================================================
 -- Civilization_FreeBuildingClasses
 --==========================================================================================================================		
@@ -58,7 +59,7 @@ INSERT INTO Civilization_FreeBuildingClasses
 			(CivilizationType, 						BuildingClassType)
 VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_ARMORY');
-
+*/
 --==========================================================================================================================
 -- Civilization_FreeUnits_FOR_TEST
 --==========================================================================================================================	
@@ -67,3 +68,7 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
 --VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'UNIT_TCM_GRENZER', 2, UNITAI_ATTACK);
 
 --==========================================================================================================================
+
+--UPDATE Events SET EraScaling = 1, RequiredEra = 'ERA_RENAISSANCE', ObsoleteEra = 'ERA_MODERN', RequiresWar = 1, EventCooldown = 20 WHERE Type = 'PLAYER_EVENT_JFD_PRUSSIA_POTATO_WAR';
+
+--UPDATE EventChoices SET EraScaling = 1, YieldBonusAllCities = 1 WHERE Type = 'PLAYER_EVENT_JFD_PRUSSIA_POTATO_WAR_CHOICE_2';
