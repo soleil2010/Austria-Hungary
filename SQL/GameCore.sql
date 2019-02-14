@@ -38,12 +38,12 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Vienna'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Hallein'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Traiskirchen'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Hohenems'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Völkermarkt'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Sankt Andrä-Höch'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Volkermarkt'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Sankt Andra-Hoch'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Bischofshofen'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Ebreichsdorf'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Gänserndorf'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Götzis'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Ganserndorf'),
+			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Gotzis'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Trofaiach'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Knittelfeld'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 		'Waidhofen'),
@@ -302,7 +302,7 @@ VALUES	('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_RECON'),
 
 INSERT INTO UnitPromotions 
 		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
-VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More Promotion = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
+VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More CityConnection = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
 		('PROMOTION_GRENZCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
 
 
@@ -332,7 +332,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_RECON', 'PROMOTION
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_HELICOPTER', 'PROMOTION_VIRIBUS_UNITIS');
 
 --=================================
---Pour test VIRIBUS UNITIS
+--Pour test VIRIBUS UNITIS à effacer après
 --=================================
 INSERT INTO Trait_DomainFreeExperienceModifier 
 		(TraitType, 								DomainType, 	Modifier)
@@ -341,7 +341,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_LAND', 	600),
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_AIR', 	600);
 
 --==========================================================================================================================
--- Civilization_FreeBuildingClasses
+-- Civilization_FreeBuildingClasses à effacer après
 --==========================================================================================================================		
 INSERT INTO Civilization_FreeBuildingClasses 
 			(CivilizationType, 						BuildingClassType)
