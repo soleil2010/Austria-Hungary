@@ -221,14 +221,7 @@ INSERT INTO Audio_2DSounds
 			(ScriptID, 										SoundID, 									SoundType, 		MinVolume, 	MaxVolume,	IsMusic,	Looping)
 VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'GAME_MUSIC', 	80, 		80, 		1, 			0),
 			('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 		'SND_LEADER_MUSIC_TCM_FRANZ_JOSEPH_WAR', 	'GAME_MUSIC', 	80, 		80, 		1,			0);
-/*--==========================================================================================================================	
--- BuildingClasses
---==========================================================================================================================	
-INSERT INTO BuildingClasses 	
-			(Type, 						 			DefaultBuilding, 					Description,	MaxPlayerInstances)
-VALUES		('BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	'BUILDING_TCM_GREAT_PERSON_GEN', 	'Crownlands',	-1),
-			('BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	null,								'Crownlands',	1);
-*/
+
 --==========================================================================================================================	
 -- Buildings
 --==========================================================================================================================			
@@ -236,14 +229,7 @@ INSERT INTO Buildings
 			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,						PortraitIndex)
 SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
 FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';		
-/*
-INSERT INTO Buildings 	
-			(Type, 												BuildingClass, 							UnmoddedHappiness,  Happiness,  GreatPeopleRateModifier, GreatWorkCount, Cost, FaithCost, NukeImmune,   ConquestProb,  PrereqTech,	Description, 	Help,			PortraitIndex, 	IconAtlas)
-VALUES		('BUILDING_TCM_GREAT_PERSON_GEN',					'BUILDINGCLASS_TCM_GREAT_PERSON_GEN',	0,					0,		    25,						 -1, 			-1,    -1, 		  1,		    0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_1',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY', 	0,					0,			15,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Cisleithania', '+15% [ICON_GREAT_PEOPLE] Great Person generation',	4,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_2',					'BUILDINGCLASS_TCM_AUSTRIA_HUNGARY',	0,					2,			0,						  0, 			 1,     0, 		  1,		 	0,				NULL, 		'Transleithania', 	NULL,	5,	'TCM_AUSTRIA_HUNGARY_ATLAS'),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_HAPPINESS_DUMMY',	'BUILDINGCLASS_TCM_GREAT_PERSON_GEN', 	1,					0,			0,						 -1, 			-1,    -1, 		  1,			0,				NULL, 		'Crownlands', 	'Crownlands',	0,	'TCM_AUSTRIA_HUNGARY_ATLAS');
-*/
+
 --==========================================================================================================================	
 -- Building_YieldChanges
 --==========================================================================================================================					
@@ -362,7 +348,7 @@ INSERT INTO Civilization_FreeBuildingClasses
 VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
 			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_ARMORY');
 	
--- A FAIRE
+-- LA MORTE
 -- Diplomacy_Responses
 --==========================================================================================================================	
 INSERT INTO Diplomacy_Responses (LeaderType, ResponseType, Response, Bias) VALUES ('LEADER_TCM_FRANZ_JOSEPH','RESPONSE_FIRST_GREETING', 'TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING%','1');
