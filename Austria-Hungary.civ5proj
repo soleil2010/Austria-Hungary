@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <ProjectGuid>{d1727c70-535a-4f1e-824a-2245be420cbc}</ProjectGuid>
-    <Name>TCM's Austria-Hungary Empire</Name>
+    <Name>TCM's Austria-Hungary Empire(1)</Name>
     <Guid>c3b136ab-bb13-460e-ab97-801d9dd8bcd6</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Alpha</Stability>
@@ -21,6 +21,27 @@
     <AssemblyName>Austria-Hungary</AssemblyName>
     <RootNamespace>Austria-Hungary</RootNamespace>
     <ModReferences />
+    <ModActions>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/GameCore.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>XML/GameText.xml</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/ArtDef.sql</FileName>
+      </Action>
+    </ModActions>
+    <ModDependencies>
+    </ModDependencies>
+    <ReloadUnitSystem>true</ReloadUnitSystem>
+    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -119,6 +140,10 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
+    <Content Include="Art\DDS\TCM_FRANZ_JOSEPH_SCENE.xml">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
     <Content Include="Art\DDS\TCM_GRENZER_FLAG_32.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
@@ -141,9 +166,21 @@
     </Content>
     <Content Include="Art\Music\tcmFranzJosephPeace.mp3">
       <SubType>Lua</SubType>
-      <ImportIntoVFS>False</ImportIntoVFS>
+      <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
     <Content Include="Art\Music\tcmFranzJosephWar.mp3">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\ArtDef.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\test_diogo.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\Test_Florian.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
