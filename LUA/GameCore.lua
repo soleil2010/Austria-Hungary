@@ -17,3 +17,18 @@ for pCity in pPlayer:Cities() do
 		pPlayer:ChangeGold(900)
 	end
 end
+
+
+-------------------------------------------------------
+-- test de modifs db
+-- met à 1 le champ "connected" pour la villes Steyr de la table Civilization_CityNames
+function DVA_cityconnected() 
+	local db = Modding.OpenSaveData()
+	local query="UPDATE Civilization_CityNames SET CONNECTED = 1 WHERE CityName LIKE 'Steyr'; "
+	db.Query(query)
+end
+
+-- call DVA_cityconnected after user pass turn 
+GameEvents.PlayerDoTurn.Add(DVA_cityconnected)
+
+--------------------------------

@@ -51,15 +51,36 @@ function GE_Grenzer(playerID)
 end
 
 
+function SetPersistentProperty(name, value)
+    if GetPersistentProperty(name) == value then return end
+    g_SaveData.SetValue(name, value)
+    g_Properties[name] = value
+end
+
+
+
+
+
+
+
+
+-- give 900 po at player and in db connect Steyr city
 function DVA_cityconnected() 
+	-- we get active player and send 900 PO (for tests)
 	local pPlayer = Players[Game.GetActivePlayer()]
-	pPlayer:ChangeGold(900)
-	local command = "UPDATE Civilization_CityNames SET CONNECTED = 1 WHERE CityName LIKE 'Steyr'; " 
-	for option in DB.Query(command) do
-	end
+	pPlayer:ChangeGold(900) -- strange, code send 2700 po...
+	
+
+	-- start db and update "CONNECTED" column of Civilization_CityNames
+	local db = Modding.OpenSaveData()
+	local query="UPDATE Civilization_CityNames SET CONNECTED = 1 WHERE CityName LIKE 'Steyr'; "
+	-- send query to db
+	for row in db.Query(query) do end
+	-- db.Query(query) doesn't work...
 end
 
 if JFD_IsCivilisationActive(civilisationID) then
+		-- when user finish ther turn
         GameEvents.PlayerDoTurn.Add(GE_Grenzer)
         GameEvents.PlayerDoTurn.Add(DVA_cityconnected)
 end
