@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by ModBuddy on 2/7/2019 8:31:53 PM -->
 <GameData>
-  <!-- Definition de la civilization -->
-	<Row Tag ="TXT_KEY_CIV_DF_AUSTRIA_HUNGARY">
-		<Text>Austro-Hungarian Empire</Text>
-	</Row>
-	<Row Tag ="TXT_KEY_CIV_DF_AUSTRIA_HUNGARY_SHORT_DESC">
-		<Text>Austro-Hungarian Empire</Text>
-	</Row>
- 
-  <!-- TODO: Insert table data example here.-->
-  
-  <!-- Enter your Game Data here. -->
-  
+	<Language_en_US>
+		<!-- Reponses diplomatique -->
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING_1">
+			<Text>Welcome to the Austro-Hungarian Crownlands, my friend. Would you care for some culture? Allow me to introduce it to you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_FIRSTGREETING_2">
+			<Text>I, Franz Joseph, Emperor of Austria-Hungary, bid you welcome to my lands. Care for a look around? The mountains are lovely here...</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED_1">
+			<Text>Damned fool! You have wiped out countless people and put them under your ever-opressing rule. At least they're united.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DEFEATED_2">
+			<Text>How this day came about I do not know. Though that smirk shall no longer be on your face when the empire strikes back.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR_1">
+			<Text>Prepare to get crushed by Austria-Hungary and her allies! This will be over by Christmas, I tell you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_DECLARE_WAR_2">
+			<Text>I just wanted to say how much of a mess your empire's looking. Oh, and we declare war on you.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED_1">
+			<Text>Ha! You really think you're a match for us, let alone our friends? This should be quick.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_LEADER_TCM_FRANZ_JOSEPH_ATTACKED_2">
+			<Text>This should be fun. Several nations backing one cause is as good as our victory.</Text>
+		</Row>
+	</Language_en_US>
 </GameData>
