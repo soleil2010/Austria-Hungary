@@ -24,3 +24,5 @@
 	--local quey = [[UPDATE Civilization_CityNames SET Connected = 1 WHERE Civilization_CityNames LIKE ]] .. cityName .. [[;]] 
 		--modDb.Query(query)
 
+
+
