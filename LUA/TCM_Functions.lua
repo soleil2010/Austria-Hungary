@@ -38,12 +38,14 @@ end
 local bonusPerPromotion = 1
 local unitGrenzerID = GameInfoTypes["UNIT_TCM_GRENZER"]
 local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
+local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
 function GE_Grenzer(playerID)
         local player = Players[playerID]
         if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
                 for unit in player:Units() do
-                        if unit:GetUnitType() == unitGrenzerID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                                local baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
+                        if unit:GetUnitCombatType() == UnitGun and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+						local baseCombatStrength = unit:GetBaseCombatStrength()
+                                --local baseCombatStrength = unit:GameInfo.Units["UNITCOMBAT_GUN"].Combat
 								if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
 									unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
 								end
