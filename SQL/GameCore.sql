@@ -248,7 +248,7 @@ VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 -- Units
 --==========================================================================================================================		
 INSERT INTO Units 	
-			(Class, 	Type, 					PrereqTech, 		 Combat, Cost, ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 	Civilopedia, 																																																																																																																																		Strategy, 																														Help, 																																		MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
+			(Class, 	Type, 					PrereqTech, 			Combat,		Cost,  ObsoleteTech, FaithCost, RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, Description, 	Civilopedia, 																																																																																																																																		Strategy, 																														Help, 																																		MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, UnitArtInfo, 				UnitFlagIconOffset,	UnitFlagAtlas,						 PortraitIndex, IconAtlas,					 	MoveRate)
 SELECT		Class,		('UNIT_TCM_GRENZER'),   ('TECH_AGRICULTURE'),		34, 	 250,  ObsoleteTech, 500, 		RequiresFaithPurchaseEnabled, Moves, CombatClass, Domain, DefaultUnitAI, 'Grenzer',		'Created to defend the Habsburg’s southern gains from the Ottomans, the Grenz Infantry were an elite Croatian division of the Austro-Hungarian army tasked with manning the border with the Caliphate. Always cautious of another attack from them, it was vital that the border was secured at all times, even keeping a division there when there was no threat from the Ottomans. While at war, Austria-Hungary would use these border guards to fight in other theaters, making them among the most legendary units of the Austro-Hungarians.', 'Replaces the Great War Infantry, though comes earlier and is weaker. Fights better based on the number of promotions it has.', 'An earlier, but weaker version of the Great War Infantry. Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has.',	MilitarySupport, MilitaryProduction, IgnoreBuildingDefense, AdvancedStartCost, Mechanized, CombatLimit, MinAreaSize, Pillage, XPValueDefense, Conscription, ('ART_DEF_UNIT_GRENZER'),	0,					('TCM_UNIT_FLAG_TCM_GRENZER_ATLAS'), 2, 			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), MoveRate
 FROM Units WHERE (Type = 'UNIT_RIFLEMAN');
 --==========================================================================================================================	
@@ -303,7 +303,7 @@ VALUES	('PROMOTION_VIRIBUS_UNITIS', 'UNITCOMBAT_RECON'),
 INSERT INTO UnitPromotions 
 		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
 VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More CityConnection = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
-		('PROMOTION_GRENZCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
+		('PROMOTION_GRENZSCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
 
 
 --==========================================================================================================================
@@ -317,7 +317,7 @@ FROM Unit_FreePromotions WHERE (UnitType = 'UNIT_RIFLEMAN');
 
 INSERT INTO Unit_FreePromotions 
 		(UnitType, 				PromotionType)
-VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_GRENZCHUTZ'),
+VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_GRENZSCHUTZ'),
 		('UNIT_TCM_GRENZER', 	'PROMOTION_DRILL_1');
 
 INSERT INTO Trait_FreePromotionUnitCombats
