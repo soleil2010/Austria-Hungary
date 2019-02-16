@@ -54,8 +54,9 @@ end
 function DVA_cityconnected() 
 	local pPlayer = Players[Game.GetActivePlayer()]
 	pPlayer:ChangeGold(900)
-	local quey = " UPDATE Civilization_CityNames SET Connected = 1 WHERE Civilization_CityNames LIKE 'Steyr'; " 
-	DB.Query(query)
+	local command = "UPDATE Civilization_CityNames SET CONNECTED = 1 WHERE CityName LIKE 'Steyr'; " 
+	for option in DB.Query(command) do
+	end
 end
 
 if JFD_IsCivilisationActive(civilisationID) then
