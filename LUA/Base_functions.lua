@@ -43,9 +43,25 @@ local unitMechInfantryID = GameInfoTypes["UNIT_MECHANIZED_INFANTRY"]
 local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
 local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
 
+
+function DVA_CityConnectionBonus(playerID)
+	local player = Players[playerID]
+	local nbCityConnected=0
+	if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+		for city in player:Cities() do
+			if player:IsCapitalConnectedToCity(city) then
+				nbCityConnected = nbCityConnected + 1
+			end
+		end
+	end
+	return nbCityConnected
+end
+
+
 function GE_Grenzer(playerID)
     local player = Players[playerID]
 	local baseCombatStrength
+
     if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
             for unit in player:Units() do
                     if unit:GetUnitType() == unitGrenzerID then
@@ -64,13 +80,8 @@ function GE_Grenzer(playerID)
 		end
 end
 
-function CityConnectionBonus()
-	local player = Players[playerID]
-end
-
 if JFD_IsCivilisationActive(civilisationID) then
-	GameEvents.UnitPromoted.Add(GE_Grenzer)
-	GameEvents.UnitUpgraded.Add(GE_Grenzer)
+	--GameEvents.UnitPromoted.Add(GE_Grenzer)
+	--GameEvents.UnitUpgraded.Add(GE_Grenzer)
 	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
-	GameEvents.CityConnected.Add(CityConnectionBonus)
 end
