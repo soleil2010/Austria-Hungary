@@ -4,3 +4,4 @@
 -- COMMUNITY
 ------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS COMMUNITY (Type TEXT, Value INTEGER);
+

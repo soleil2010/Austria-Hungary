@@ -32,9 +32,6 @@ VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
 --Add boolean to CytyName
 --=============================================
 
-ALTER TABLE Civilization_CityNames ADD COLUMN 'CONNECTED' INTERGRER DEFAULT 0;
-
-SELECT 
 
 
 
