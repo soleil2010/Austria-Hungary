@@ -226,7 +226,7 @@ VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRAN
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
-			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,									PortraitIndex, Capital)
+			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,									PortraitIndex, CapitalOnly)
 SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3,				1
 FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';		
 
@@ -243,6 +243,12 @@ INSERT INTO Building_Flavors
 			(BuildingType, 					FlavorType,				Flavor)
 VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15);
+
+--Building_FreeUnits XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
+
+INSERT INTO Building_FreeUnits
+			(BuildingType,				UnitType,		NumUnits)
+VALUES		('BUILDING_TCM_CONCERT_HALL','UNIT_SCIENTIST', 4);
 --==========================================================================================================================
 --==========================================================================================================================	
 -- Units
@@ -332,7 +338,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_RECON', 'PROMOTION
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_HELICOPTER', 'PROMOTION_VIRIBUS_UNITIS');
 
 --=================================
---Pour test VIRIBUS UNITIS à effacer après
+--Pour test VIRIBUS UNITIS XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
 --=================================
 INSERT INTO Trait_DomainFreeExperienceModifier 
 		(TraitType, 								DomainType, 	Modifier)
@@ -341,7 +347,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_LAND', 	600),
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_AIR', 	600);
 
 --==========================================================================================================================
--- Civilization_FreeBuildingClasses à effacer après
+-- Civilization_FreeBuildingClasses XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
 --==========================================================================================================================		
 INSERT INTO Civilization_FreeBuildingClasses 
 			(CivilizationType, 						BuildingClassType)

@@ -55,3 +55,5 @@ end
 if JFD_IsCivilisationActive(civilisationID) then
         GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 end
+
+

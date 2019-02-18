@@ -1,38 +1,36 @@
---==================================
---count promotion
---==================================
-/*
-ALTER TABLE UnitPromotions ADD NumberPromotion SET DEFAULT 0
+ --===========================================
+ --Teste Dummy BuildingClass
+ --===========================================
 
-UPDATE TABLE UnitPromotions
-			SELECT NumberPromotion
-			CASE
-			WHEN 'PromotionType.ID' then 'NumberPromotion' = 'NumberPromotion' + 1
-			END;
+INSERT INTO BuildingClasses
+			(Type,						DefaultBuilding,	NoLimit)
+VALUES		('BUILDINGCLASS_DF_LIBRARY', 'BUILDING_DF_LIBRARY', 1);
 
-UPDATE TABLE PROMOTION_VIRIBUS_UNITIS
-			SELECT UnitType
-			CASE
-			WHEN UnitType = 'UNIT_PATHFINDER' THEN SET CombatPercent = 2*'NumberPromotion'
-			END;
+--Buildings
 
-	
-INSERT INTO Civilization_FreeBuildingClasses 
-			(CivilizationType, 						BuildingClassType)
-VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_ARMORY');
-*/
+INSERT INTO Buildings
+			(Type,				BuildingClass,				Description, GoldMaintenance, Cost, FaithCost, GreatWorkCount, NeverCapture, NukeImmune, ConquestProb, HurryCostModifier, IconAtlas,		PortraitIndex, IsDummy)
+VALUES		('BUILDING_DF_LIBRARY','BUILDINGCLASS_DF_LIBRARY',	'Teste',	 0,					-1,		-1,			-1,				1,			1,			0,			-1,				'CIV_COLOR_ATLAS',		0,			1);
 
 
---UPDATE Events SET EraScaling = 1, RequiredEra = 'ERA_RENAISSANCE', ObsoleteEra = 'ERA_MODERN', RequiresWar = 1, EventCooldown = 20 WHERE Type = 'PLAYER_EVENT_JFD_PRUSSIA_POTATO_WAR';
 
---UPDATE EventChoices SET EraScaling = 1, YieldBonusAllCities = 1 WHERE Type = 'PLAYER_EVENT_JFD_PRUSSIA_POTATO_WAR_CHOICE_2';
+--Building_YieldFromGPExpend
+
+INSERT INTO Building_YieldFromGPExpend
+			(BuildingType, YieldType, Yield)
+VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 1),
+			('BUILDING_DF_LIBRARY', 'YIELD_PRODUCTION', 50);
+
 
 --=============================================
---Add boolean to CytyName
+--Teste Policy Dummy
 --=============================================
+INSERT INTO Policies
+		(Type,			description,				IsDummy)
+VALUES	('POLICY_D_UA','testPol',					1);
 
-
-
-
+INSERT INTO Policy_CityYieldChanges
+	(PolicyType, YieldType, Yield)
+VALUES
+	('POLICY_D_UA', 'YIELD_PRODUCTION', 2);
  
