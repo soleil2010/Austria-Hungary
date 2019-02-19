@@ -44,44 +44,30 @@ local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
 local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
 
 
-function DVA_CityConnectionBonus(playerID)
-	local player = Players[playerID]
-	local nbCityConnected=0
-	if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
-		for city in player:Cities() do
-			if player:IsCapitalConnectedToCity(city) then
-				nbCityConnected = nbCityConnected + 1
-			end
-		end
-	end
-	return nbCityConnected
-end
-
-
 function GE_Grenzer(playerID)
     local player = Players[playerID]
-	local baseCombatStrength
+    local baseCombatStrength
 
     if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
             for unit in player:Units() do
                     if unit:GetUnitType() == unitGrenzerID then
-							baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat								
-					elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-							baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat								
-					elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-							baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat 								
-					elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-							baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat 								
+                            baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
+                    elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+                            baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat
+                    elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+                            baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat
+                    elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+                            baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat
                     end
-					if (unit:GetUnitType() == unitGrenzerID or unit:GetUnitType() == unitGWIID or unit:GetUnitType() == unitInfantryID or unit:GetUnitType() == unitMechInfantryID) and baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-						unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-					end
-			end
-		end
+                    if (unit:GetUnitType() == unitGrenzerID or unit:GetUnitType() == unitGWIID or unit:GetUnitType() == unitInfantryID or unit:GetUnitType() == unitMechInfantryID) and baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
+                        unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
+                    end
+            end
+        end
 end
-
+     
 if JFD_IsCivilisationActive(civilisationID) then
-	--GameEvents.UnitPromoted.Add(GE_Grenzer)
-	--GameEvents.UnitUpgraded.Add(GE_Grenzer)
-	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
+GameEvents.UnitPromoted.Add(GE_Grenzer)
+GameEvents.UnitUpgraded.Add(GE_Grenzer)
+GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 end
