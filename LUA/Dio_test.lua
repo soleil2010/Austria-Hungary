@@ -41,6 +41,6 @@ end
 
 
 function PRINT()
-	print(NbVilles.." is total of connected cities");
+	print(NbVilles().." is total of connected cities");
 end
 GameEvents.PlayerDoTurn.Add(PRINT)
