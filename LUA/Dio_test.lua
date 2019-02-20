@@ -41,6 +41,7 @@ end
 
 
 function PRINT(player)
+	local player = Players[Game.GetActivePlayer()]
 	local username= player:GetNickName();
 	print("I'm "..username.." and i have "..NbVilles().." cities connected to capital!");
 end
