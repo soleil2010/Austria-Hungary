@@ -165,17 +165,18 @@ function GE_Grenzer(playerID)
         end
 end
 
---====
-function DVA_CityConnectionBonus(playerID)
-    local player = Players[playerID]
-    local nbCityConnected=0
-    if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
-        for city in player:Cities() do
-            if player:IsCapitalConnectedToCity(city) then
-                nbCityConnected = nbCityConnected + 1
-            end
-        end
-    end
-    return nbCityConnected
-end
 
+-- annonce le nombre de villes et de villes connectées à la capitale
+
+function PrintNbVilles(PlayerID)
+	local player = Players[Game.GetActivePlayer()]
+	local nbvilles = player:GetNumCities()
+	local isConnected=0
+	print(nbvilles.." ville(s) construite(s)");
+	for city in player:Cities() do
+		if (player:IsCapitalConnectedToCity(city) ) then
+			isConnected = isConnected+1
+		end
+	end
+	print(isConnected.." ville(s) connectée(s)");
+end

@@ -65,6 +65,12 @@
         <Description>base</Description>
         <FileName>LUA/Base_functions.lua</FileName>
       </Content>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Dio</Name>
+        <Description>diogay test la vie</Description>
+        <FileName>LUA/Dio_test.lua</FileName>
+      </Content>
     </ModContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
@@ -203,6 +209,10 @@
     <Content Include="LUA\BASE_LUA_TCM.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\Dio_test.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
     <Content Include="LUA\FloTeste.lua">
       <SubType>Lua</SubType>
