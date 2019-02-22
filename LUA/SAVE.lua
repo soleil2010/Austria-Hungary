@@ -166,16 +166,166 @@ function GE_Grenzer(playerID)
 end
 
 --====
-function DVA_CityConnectionBonus(playerID)
-    local player = Players[playerID]
-    local nbCityConnected=0
-    if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+--==========================================================================================================================
+-- UTILITY FUNCTIONS
+--==========================================================================================================================
+-- JFD_IsCivilisationActive
+--------------------------------------------------------------     
+function JFD_IsCivilisationActive(civilisationID)
+        for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
+                local slotStatus = PreGame.GetSlotStatus(iSlot)
+                if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
+                        if PreGame.GetCivilization(iSlot) == civilisationID then
+                                return true
+                        end
+                end
+        end
+     
+        return false
+end
+--====================================================================
+local iPolicy = GameInfoTypes["POLICY_D_UA"]
+
+function CheckTrading(PlayerID,CityID)
+    local player = Players[PlayerID]
+	for city in player:Cities() do
+    if player:GetCivilizationType() == civilisationID and player:IsAlive() then
+	player:SetNumFreePolicies(1)
+	player:SetNumFreePolicies(0)
+	player:SetHasPolicy(iPolicy, true)
+	end
+    end
+end
+GameEvents.PlayerCityFounded.Add(CheckTrading)
+GameEvents.PlayerDoTurn.Add(CheckTrading)
+
+--=======================================================================
+local eBuildingTeutonicOrder = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+	local eBuildingDummyForTeutonicOrder = GameInfoTypes.BUILDING_DF_LIBRARY
+	local eBuildingBarracks = GameInfoTypes.BUILDING_LIBRARY
+	local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+	local pPlayer = Players[iPlayer]
+-- adds bonus to barracks if TO is built
+function OnCityConstructionAddDummyForTO(iPlayer, iCity, eBuilding)
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilisationID) then return end
+
+	if eBuilding == eBuildingTeutonicOrder then
+		local iNumberOfBarracks = pPlayer:CountNumBuildings(eBuildingBarracks)
+
+		if iNumberOfBarracks > 0 then
+			for city in pPlayer:Cities() do
+				local iCurrentBarracks = 0
+
+				if city:IsHasBuilding(eBuildingBarracks) then
+					city:SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
+					iCurrentBarracks = iCurrentBarracks + 1
+
+					if iCurrentBarracks == iNumberOfBarracks then
+						break
+					end
+				end
+			end
+		end
+	elseif eBuilding == eBuildingBarracks then
+		local iNumberOfTeutonicOrders = pPlayer:CountNumBuildings(eBuildingTeutonicOrder)
+
+		if iNumberOfTeutonicOrders > 0 then
+			pPlayer:GetCityByID(iCity):SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
+		end
+	end
+end
+
+function OnFoundAddDummyForTO(iPlayer, iX, iY)
+	local pPlayer = Players[iPlayer]
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilisationID) then return end
+
+	if pPlayer:CountNumBuildings(eBuildingTeutonicOrder) > 0 then
+
+		local pFoundCity = Map.GetPlot(iX, iY):GetWorkingCity()
+		if pFoundCity:IsHasBuilding(eBuildingBarracks) then
+
+			pFoundCity:SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
+		end
+	end
+end
+
+if JFD_IsCivilisationActive(civilisationID) then
+	GameEvents.CityConstructed.Add(OnCityConstructionAddDummyForTO)
+	--GameEvents.PlayerDoTurn.Add(OnCityConstructionAddDummyForTO)
+	GameEvents.PlayerCityFounded.Add(OnFoundAddDummyForTO)
+end
+
+function NbVilles(PlayerID, CityID)
+    local player = Players[PlayerID]
+	for city in player:Cities() do
+	if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+    nbvilles = player:GetNumCities()
+	player:ChangeGold(10)
+    print(nbvilles);
+	break
+	end
+	end
+end
+
+GameEvents.PlayerDoTurn.Add(NbVilles)
+
+
+Events.PlayerEraChanged.Add(
+function(playerID)
+	local pPlayer = Players[playerID]
+	if (pPlayer:IsAlive()) then
+		for pCity in pPlayer:Cities() do
+			local pBuilding = GameInfoTypes.BUILDING_IGLOO
+			local pBuildClass = GameInfoTypes.BUILDINGCLASS_GRANARY
+			local culture = GameInfoTypes.YIELD_CULTURE
+			if (pCity:IsHasBuilding(pBuilding)) then
+
+				if (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_INFORMATION) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 8)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_ATOMIC) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 7)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_MODERN) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 6)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 5)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 4)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 3)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 2)
+				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT) then
+					pCity:SetBuildingYieldChange(pBuildClass, culture, 1)
+				else break end
+			end
+		end
+	end
+end)
+
+Events.PlayerEraChanged.Add(fnQuo_FreeCivicBoostOnEraChange);
+
+--== compte ville
+function NbVilles(PlayerID)
+    local player = Players[PlayerID]
+	print("NB OK1")
+	if(player:GetCivilizationType() == civilisationID ) then
+        local nbvilles = player:GetNumCities()
+        local isConnected=0
+		print("NB OK2")
+        --print(nbvilles.." ville(s) construite(s)");
         for city in player:Cities() do
-            if player:IsCapitalConnectedToCity(city) then
-                nbCityConnected = nbCityConnected + 1
+            if (player:IsCapitalConnectedToCity(city) and player:GetCivilizationType() == civilisationID ) then
+                isConnected = isConnected+1
+				print(isConnected.."NB OK2")
             end
         end
-    end
-    return nbCityConnected
+		end
+	return isConnected
 end
+GameEvents.PlayerDoTurn.Add(NbVilles)
+
+
+
 

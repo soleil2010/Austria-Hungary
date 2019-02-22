@@ -2,18 +2,18 @@
 -- Author: Florian
 -- DateCreated: 2/16/2019 10:07:24 AM
 --------------------------------------------------------------
-local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 
 --==========================================================================================================================
 -- UTILITY FUNCTIONS
 --==========================================================================================================================
 -- JFD_IsCivilisationActive
 --------------------------------------------------------------     
-function JFD_IsCivilisationActive(civilisationID)
+function JFD_IsCivilizationActive(civilizationID)
         for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
                 local slotStatus = PreGame.GetSlotStatus(iSlot)
                 if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
-                        if PreGame.GetCivilization(iSlot) == civilisationID then
+                        if PreGame.GetCivilization(iSlot) == civilizationID then
                                 return true
                         end
                 end
@@ -21,77 +21,116 @@ function JFD_IsCivilisationActive(civilisationID)
      
         return false
 end
---====================================================================
-local iPolicy = GameInfoTypes["POLICY_D_UA"]
 
-function CheckTrading(PlayerID,CityID)
-    local player = Players[PlayerID]
-	for city in player:Cities() do
-    if player:GetCivilizationType() == civilisationID and player:IsAlive() then
-	player:SetNumFreePolicies(1)
-	player:SetNumFreePolicies(0)
-	player:SetHasPolicy(iPolicy, true)
-	end
-    end
-end
-GameEvents.PlayerCityFounded.Add(CheckTrading)
-GameEvents.PlayerDoTurn.Add(CheckTrading)
 
---=======================================================================
+--===================================================================
+--Building scaling with era
+--===================================================================
+--[[
+--Events.PlayerEraChanged.Add(
+function ERABuild(PlayerID)
+	local player = Players[PlayerID]
+	if (player:IsEverAlive() and player:GetCivilizationType() == civilizationID) then
+		for city in player:Cities() do
 
--- adds bonus to barracks if TO is built
-function OnCityConstructionAddDummyForTO(iPlayer, iCity, eBuilding)
-	local eBuildingTeutonicOrder = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
-	local eBuildingDummyForTeutonicOrder = GameInfoTypes.BUILDING_DF_LIBRARY
-	local eBuildingBarracks = GameInfoTypes.BUILDING_LIBRARY
-	local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
-	local pPlayer = Players[iPlayer]
-	
-	if not (pPlayer and pPlayer:GetCivilizationType() == civilisationID) then return end
+			--if (city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED)) then
 
-	if eBuilding == eBuildingTeutonicOrder then
-		local iNumberOfBarracks = pPlayer:CountNumBuildings(eBuildingBarracks)
-
-		if iNumberOfBarracks > 0 then
-			for city in pPlayer:Cities() do
-				local iCurrentBarracks = 0
-
-				if city:IsHasBuilding(eBuildingBarracks) then
-					city:SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
-					iCurrentBarracks = iCurrentBarracks + 1
-
-					if iCurrentBarracks == iNumberOfBarracks then
-						break
-					end
-				end
+				if (player:GetCurrentEra() == GameInfoTypes.ERA_INFORMATION) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 8)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_ATOMIC) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_MODERN) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 5)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 3)
+				elseif (player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 2)
+				elseif (player:GetCurrentEra() == GameInfo.Eras["ERA_ANCIENT"]) then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 2)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 2)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 1)
+					print("ERA OK")
+				else break end
 			end
 		end
-	elseif eBuilding == eBuildingBarracks then
-		local iNumberOfTeutonicOrders = pPlayer:CountNumBuildings(eBuildingTeutonicOrder)
+	--end
+end--)
+GameEvents.PlayerDoTurn.Add(ERABuild)
+]]
+--=============================================================================================
 
-		if iNumberOfTeutonicOrders > 0 then
-			pPlayer:GetCityByID(iCity):SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
+function UAFranzCapital(PlayerID)
+	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
+	local player = Players[PlayerID]
+
+if player:GetCivilizationType() == civilizationID then
+	for city in player:Cities() do
+		city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+		print("CAPITAL OK")
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+		--print("change yield ok")
+	end
+end
+end
+GameEvents.PlayerDoTurn.Add(UAFranzCapital)
+GameEvents.PlayerCityFounded.Add(UAFranzCapital)
+--=============================================================================================
+
+function EraScaling(PlayerID)
+local player = Players[PlayerID]
+	if player:GetCivilizationType() == civilizationID then
+		for city in player:Cities() do
+			if player:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+					print("ERA OK")
+			end
 		end
 	end
 end
+GameEvents.PlayerDoTurn.Add(EraScaling)
 
-function OnFoundAddDummyForTO(iPlayer, iX, iY)
-	local pPlayer = Players[iPlayer]
-	
-	if not (pPlayer and pPlayer:GetCivilizationType() == civilisationID) then return end
 
-	if pPlayer:CountNumBuildings(eBuildingTeutonicOrder) > 0 then
 
-		local pFoundCity = Map.GetPlot(iX, iY):GetWorkingCity()
-		if pFoundCity:IsHasBuilding(eBuildingBarracks) then
+--NE PAS UTILISER LES PLOT: TROP GOURMAND!
+--[[
+local DumConnec = GameInfoTypes.BUILDING_DF_CONNECTED
 
-			pFoundCity:SetNumRealBuilding(eBuildingDummyForTeutonicOrder, 1)
-		end
+function UAConnection(PlayerID, CityID, BuildingID)
+	local player = Players[PlayerID]
+
+	if not (player and player:GetCivilizationType() == civilizationID) then return end
+	if eBuilding == DumConnec then
+	for city in player:Cities() do
+
+	if player:IsCapitalConnectedToCity(city) and not IsHasBuilding(DumConnec) then
+		city:SetNumRealBuilding(DumConnec, 1)
+		print("CONNECTION OK")
+	end
+	end
 	end
 end
+GameEvents.PlayerDoTurn.Add(UAConnection)
+]]
 
-if JFD_IsCivilisationActive(civilisationID) then
-	GameEvents.CityConstructed.Add(OnCityConstructionAddDummyForTO)
-	--GameEvents.PlayerDoTurn.Add(OnCityConstructionAddDummyForTO)
-	GameEvents.PlayerCityFounded.Add(OnFoundAddDummyForTO)
-end

@@ -311,7 +311,8 @@ INSERT INTO UnitPromotions
 VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More CityConnection = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
 		('PROMOTION_GRENZSCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
 
-
+UPDATE UnitPromotions SET IconAtlas = 'extraPromo_Atlas' WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
+UPDATE UnitPromotions SET PortraitIndex = '60' WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
 --==========================================================================================================================
 -- FREE PROMOTION:  GRENZER to RIFLEMAN
 --==========================================================================================================================
