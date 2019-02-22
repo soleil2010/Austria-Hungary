@@ -23,11 +23,11 @@
 
 
 
-
+--26
 local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 
 function NbVilles()
-	local player = Players[Game.GetActivePlayer()]
+    local player = Players[Game.GetActivePlayer()]
 	local nbvilles = player:GetNumCities()
 	local isConnected=0
 	print(nbvilles.." ville(s) construite(s)");
@@ -40,9 +40,8 @@ function NbVilles()
 end
 
 
-function PRINT(player)
-	local player = Players[Game.GetActivePlayer()]
-	local username= player:GetNickName();
-	print("I'm "..username.." and i have "..NbVilles().." cities connected to capital!");
+
+function PRINT()
+	print("i have "..NbVilles().." cities connected to capital!");
 end
 GameEvents.PlayerDoTurn.Add(PRINT)
