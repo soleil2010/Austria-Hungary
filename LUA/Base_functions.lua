@@ -65,9 +65,36 @@ function GE_Grenzer(playerID)
             end
         end
 end
+
+-- return number of cities connected to capital
+function NbCityConnected()
+    local player = Players[Game.GetActivePlayer()]
+	local nbvilles = player:GetNumCities()
+	local isConnected=0
+	print(nbvilles.." ville(s) construite(s)");
+	for city in player:Cities() do
+		if (player:IsCapitalConnectedToCity(city) and player:GetCivilizationType() == civilisationID ) then
+			isConnected = isConnected+1
+		end
+	end
+	return isConnected
+end
+
+
+-- event quand il y a une nouvelle connection, a test
+function Viribus_Unitis()
+	print("Viribus_Unitis");
+	local nbCities=NbCityConnected()
+	print(nbCities);
+end
+
+
+
      
 if JFD_IsCivilisationActive(civilisationID) then
-GameEvents.UnitPromoted.Add(GE_Grenzer)
-GameEvents.UnitUpgraded.Add(GE_Grenzer)
-GameEvents.PlayerDoTurn.Add(GE_Grenzer)
+	GameEvents.UnitPromoted.Add(GE_Grenzer)
+	GameEvents.UnitUpgraded.Add(GE_Grenzer)
+	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 end
+
+GameEvents.PlayerDoTurn.Add(Viribus_Unitis)

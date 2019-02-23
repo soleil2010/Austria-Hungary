@@ -6,3 +6,33 @@
 --if (not city:IsCapital() and player:IsCapitalConnectedToCity(city) and not city:IsBlockaded()) then
 --local isCapital = pCity:IsCapital();
 
+--function GE_Grenzer(playerID)
+--        local player = Players[playerID]
+--        if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+--                for unit in player:Units() do
+--                        if unit:GetUnitType() == unitGrenzerID then
+--								local baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
+--								if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
+--									unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
+--									end
+--							elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+--									local baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat
+--									if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
+--										unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
+--										end
+--									elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+--									local baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat 
+--											if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
+--												unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
+--												end
+--												elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
+--													local baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat 
+--														if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
+--														unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
+--														end
+--								
+--								
+--                        end
+--				end
+--			end
+--end
