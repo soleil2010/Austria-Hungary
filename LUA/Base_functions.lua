@@ -2,13 +2,13 @@
 -- Author: Florian
 -- DateCreated: 2/17/2019 12:51:16 PM
 --------------------------------------------------------------
-local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 --==========================================================================================================================
 -- UTILITY FUNCTIONS
 --==========================================================================================================================
 -- JFD_IsCivilisationActive
 --------------------------------------------------------------     
-function JFD_IsCivilisationActive(civilisationID)
+function JFD_IsCivilisationActive(civilizationID)
         for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
                 local slotStatus = PreGame.GetSlotStatus(iSlot)
                 if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
@@ -48,7 +48,7 @@ function GE_Grenzer(playerID)
     local player = Players[playerID]
     local baseCombatStrength
 
-    if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+    if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
             for unit in player:Units() do
                     if unit:GetUnitType() == unitGrenzerID then
                             baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
@@ -66,8 +66,65 @@ function GE_Grenzer(playerID)
         end
 end
      
-if JFD_IsCivilisationActive(civilisationID) then
+if JFD_IsCivilisationActive(civilizationID) then
 GameEvents.UnitPromoted.Add(GE_Grenzer)
 GameEvents.UnitUpgraded.Add(GE_Grenzer)
 GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 end
+
+--================================================
+--UA Scaling Era
+--================================================
+
+function EraScaling(PlayerID)
+local player = Players[PlayerID]
+	if player:GetCivilizationType() == civilizationID then
+		for city in player:Cities() do
+		print("Scaleok1 ok")
+		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
+
+				if player:GetCurrentEra() == GameInfoTypes.ERA_FUTURE then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 8)
+				elseif player:GetCurrentEra() == GameInfoTypes.POSTMODERN then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
+				print("Scaleok2 ok")
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 5)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 3)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
+
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 2)
+					else
+			end
+		end
+		end
+		print("Scaleok3 ok")
+	end
+end
+GameEvents.PlayerDoTurn.Add(EraScaling)
+--GameEvent.TeamSetEra.Add(EraScaling)

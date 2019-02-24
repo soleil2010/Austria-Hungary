@@ -42,6 +42,7 @@ INSERT INTO BuildingClasses
 			(Type,							DefaultBuilding,		NoLimit)
 VALUES		('BUILDINGCLASS_DF_CONNECTED', 'BUILDING_DF_CONNECTED',		 1);
 
+
 --=============================================
 --Buildings
 --=============================================
@@ -58,6 +59,7 @@ INSERT INTO Building_YieldChanges
 			(BuildingType, 					YieldType,				Yield)
 VALUES		('BUILDING_DF_CONNECTED',		'YIELD_PRODUCTION',		2),
 			('BUILDING_DF_CONNECTED',		'YIELD_GOLD',			2),
+			('BUILDING_DF_CONNECTED',		'YIELD_SCIENCE',		500),
 			('BUILDING_DF_CONNECTED',		'YIELD_FAITH',			1);
 
  

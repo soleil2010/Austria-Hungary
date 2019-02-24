@@ -305,7 +305,7 @@ function(playerID)
 end)
 
 Events.PlayerEraChanged.Add(fnQuo_FreeCivicBoostOnEraChange);
-
+--[[
 --== compte ville
 function NbVilles(PlayerID)
     local player = Players[PlayerID]
@@ -325,7 +325,81 @@ function NbVilles(PlayerID)
 	return isConnected
 end
 GameEvents.PlayerDoTurn.Add(NbVilles)
+--[[
+function EraScaling(PlayerID)
+local player = Players[PlayerID]
+--local eraID = player:GetCurrentEra()
+	if player:GetCivilizationType() == civilizationID then
+		for city in player:Cities() do
+		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
+		print("hasBuild ok")
+			--if player:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT then
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+					--print("ERA OK")
+				if player:GetCurrentEra() == GameInfoTypes.ERA_INFORMATION then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 16)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 8)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_ATOMIC then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 10)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 5)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 8)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 6)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 3)
+				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 2)
+				--elseif player:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT then
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 2)
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 2)
+					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 1)
+					print("ERA OK")
+					else
+					break
+			end
+		end
+		end
+	end
+end
+GameEvents.PlayerDoTurn.Add(EraScaling)
+GameEvents.PlayerEnteredNewEra.Add(EraScaling)
 
+--=========================================================
+function UAConnection(PlayerID)
+	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
+	local player = Players[PlayerID]
 
+if player:GetCivilizationType() == civilizationID then
+	for city in player:Cities() do
+		if Player:IsCapitalConnectedToCity(city) and player:IsEverAlive() then
+		city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+		print("connection ok")
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
+		--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+		--print("change yield ok")
+		end
+	end
+end
+end
+--GameEvents.CityConnections.Add(UAConnection)
+GameEvents.PlayerDoTurn.Add(UAConnection)
 
 
