@@ -23,16 +23,16 @@ VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 1),
 
 
 --=============================================
---Teste Policy Dummy
+--Policy Dummy for KH
 --=============================================
 INSERT INTO Policies
 		(Type,			description,				IsDummy)
-VALUES	('POLICY_D_UA','testPol',					1);
+VALUES	('POLICY_D_KH','testPol',					1);
 
-INSERT INTO Policy_CityYieldChanges
-	(PolicyType, YieldType, Yield)
-VALUES
-	('POLICY_D_UA', 'YIELD_PRODUCTION', 2);
+INSERT INTO Policy_GreatPersonExpendedYield
+		(PolicyType,	GreatPersonType,	YieldType,		Yield)
+VALUES	('POLICY_D_KH',	'GREATPERSON_ADMIRAL'	,'YIELD_SCIENCE', 100),
+		('POLICY_D_KH',	'GREATPERSON_GENERAL'	,'YIELD_CULTURE', 100);
 
  --===========================================
  --Dummies
@@ -59,7 +59,6 @@ INSERT INTO Building_YieldChanges
 			(BuildingType, 					YieldType,				Yield)
 VALUES		('BUILDING_DF_CONNECTED',		'YIELD_PRODUCTION',		2),
 			('BUILDING_DF_CONNECTED',		'YIELD_GOLD',			2),
-			('BUILDING_DF_CONNECTED',		'YIELD_SCIENCE',		500),
 			('BUILDING_DF_CONNECTED',		'YIELD_FAITH',			1);
 
  

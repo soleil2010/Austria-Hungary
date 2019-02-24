@@ -235,7 +235,8 @@ FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';
 --==========================================================================================================================					
 INSERT INTO Building_YieldChanges 
 			(BuildingType, 					YieldType,				Yield)
-VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		5);
+VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_SCIENCE',		5),
+			('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		1);
 --==========================================================================================================================	
 -- Building_Flavors
 --==========================================================================================================================					
@@ -248,7 +249,7 @@ VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 
 INSERT INTO Building_FreeUnits
 			(BuildingType,				UnitType,		NumUnits)
-VALUES		('BUILDING_TCM_CONCERT_HALL','UNIT_SCIENTIST', 4);
+VALUES		('BUILDING_TCM_CONCERT_HALL','UNIT_GREAT_GENERAL', 4);
 --==========================================================================================================================
 --==========================================================================================================================	
 -- Units

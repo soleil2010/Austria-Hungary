@@ -12,7 +12,7 @@ function JFD_IsCivilisationActive(civilizationID)
         for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
                 local slotStatus = PreGame.GetSlotStatus(iSlot)
                 if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
-                        if PreGame.GetCivilization(iSlot) == civilisationID then
+                        if PreGame.GetCivilization(iSlot) == civilizationID then
                                 return true
                         end
                 end
@@ -80,7 +80,6 @@ function EraScaling(PlayerID)
 local player = Players[PlayerID]
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
-		print("Scaleok1 ok")
 		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
 
 				if player:GetCurrentEra() == GameInfoTypes.ERA_FUTURE then
@@ -94,7 +93,6 @@ local player = Players[PlayerID]
 					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
 					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
-				print("Scaleok2 ok")
 
 					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
 					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
@@ -123,8 +121,52 @@ local player = Players[PlayerID]
 			end
 		end
 		end
-		print("Scaleok3 ok")
 	end
 end
 GameEvents.PlayerDoTurn.Add(EraScaling)
---GameEvent.TeamSetEra.Add(EraScaling)
+--=====================================================
+--UAConnectionCities
+--=====================================================
+function UAConnection(PlayerID)
+	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
+	local player = Players[PlayerID]
+
+if player:GetCivilizationType() == civilizationID then
+	for city in player:Cities() do
+		if Player:IsCapitalConnectedToCity(city) and player:IsEverAlive() and not city:IsCapital() then
+		city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+		end
+	end
+end
+end
+GameEvents.PlayerDoTurn.Add(UAConnection)
+--=====================================================
+--UAConnectionCapital
+--=====================================================
+function UAFranzCapital(PlayerID)
+	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
+	local player = Players[PlayerID]
+
+if player:GetCivilizationType() == civilizationID then
+	for city in player:Cities() do
+		if city:IsCapital() then
+		city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+		end
+	end
+end
+end
+GameEvents.PlayerCityFounded.Add(UAFranzCapital)
+--======================================================================
+--UB Kaiserliche Hofbibliothek_GG_GA
+--======================================================================
+function CheckTrading(PlayerID,CityID)
+    local player = Players[PlayerID]
+		for city in player:Cities() do
+			if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(GameInfoTypes.BUILDING_TCM_CONCERT_HALL) then
+			player:SetNumFreePolicies(1)
+			player:SetNumFreePolicies(0)
+			player:SetHasPolicy(iPolicy, true)
+			end
+		end
+end
+GameEvents.CityConstructed.Add(CheckTrading)
