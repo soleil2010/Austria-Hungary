@@ -172,6 +172,27 @@ if player:GetCivilizationType() == civilizationID then
 end
 end
 GameEvents.PlayerCityFounded.Add(UAFranzCapital)
+--=====================================================
+--UB Kaiserliche Hofbibliothek Connection Capital
+--=====================================================
+function UBKH(PlayerID)
+	local player = Players[PlayerID]
+	local KHBuilding = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+	local KHBuildingClass = GameInfoTypes.BUILDINGCLASS_NATIONAL_COLLEGE
+
+	if player:GetCivilizationType() == civilizationID then
+	print("ok")
+		for city in player:Cities() do
+		print("ok1")
+			if city:IsHasBuilding(KHBuilding) then
+			print("ok2")
+			city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, NbCityConnected())
+			--print(NbCityConnected.." on gagne normalement ca")
+			end
+		end
+	end
+end
+GameEvents.PlayerDoTurn.Add(UBKH)
 --======================================================================
 --UB Kaiserliche Hofbibliothek_GG_GA
 --======================================================================
@@ -193,6 +214,8 @@ function ViribusUnitis(PlayerID)
     local player = Players[PlayerID]
     local baseCombatStrength
 	local i=0
+	local NBDummy = player:CountNumBuildings(GameInfoTypes.BUILDING_DF_CONNECTED)
+	local NbConnect = NbCityConnected()
 
     if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
         for unit in player:Units() do
@@ -205,14 +228,14 @@ function ViribusUnitis(PlayerID)
 				
 				local force = GameInfo.Units[unit:GetUnitType()].Combat;
 
-				unit:SetBaseCombatStrength(force + (0.35*(NbCityConnected())))
+				unit:SetBaseCombatStrength(force + (0.15*(NbCityConnected())))
 
 				elseif unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_SIEGE then
 						local rUnitType = unit:GetUnitType();
 
 						local rForce = GameInfo.Units[unit:GetUnitType()].RangedCombat;
 
-						unit:SetBaseRangedCombatStrength(rForce + (0.35*(NbCityConnected())))
+						unit:SetBaseRangedCombatStrength(rForce + (0.15*(NbCityConnected())))
 				end
 		end
 	end
