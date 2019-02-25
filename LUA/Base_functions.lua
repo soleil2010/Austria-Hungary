@@ -80,21 +80,47 @@ function NbCityConnected()
 	return isConnected
 end
 
-
+local GEvirib = GameInfoTypes["PROMOTION_VIRIBUS_UNITIS"]
 -- event quand il y a une nouvelle connection, a test
-function Viribus_Unitis()
-	print("Viribus_Unitis");
-	local nbCities=NbCityConnected()
-	print(nbCities);
+function Viribus_Unitis(playerID)
+    local player = Players[playerID]
+    local baseCombatStrength
+	local i=0
+    if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
+        for unit in player:Units() do
+            if (unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS)) then
+			
+				i = i+1
+				print(i.." virivus UNITIS!!!!")
+				
+
+
+				local unitType = unit:GetUnitType();
+				print("mon unite est "..unit:GetName().." et son id est "..unitType);
+				
+				local force=GameInfo.Units[unit:GetUnitType()].Combat;
+				print("mon ancienne force est de "..force)
+
+				unit:SetBaseCombatStrength(force+100)
+
+				local forces=GameInfo.Units[unit:GetUnitType()].Combat+100;
+				print("ma nouvelle force est de "..forces)    
+
+            end
+        end
+    end
+--	print("Viribus_Unitis");
+--	local nbCities=NbCityConnected()
+--	print(nbCities);
 end
 
 
 
      
-if JFD_IsCivilisationActive(civilisationID) then
-	GameEvents.UnitPromoted.Add(GE_Grenzer)
-	GameEvents.UnitUpgraded.Add(GE_Grenzer)
-	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
-end
+--if JFD_IsCivilisationActive(civilisationID) then
+--	GameEvents.UnitPromoted.Add(GE_Grenzer)
+--	GameEvents.UnitUpgraded.Add(GE_Grenzer)
+--	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
+--end
 
 GameEvents.PlayerDoTurn.Add(Viribus_Unitis)
