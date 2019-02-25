@@ -21,7 +21,9 @@ function JFD_IsCivilizationActive(civilizationID)
      
         return false
 end
-
+--=============================================
+--NBConnectionCity
+--=============================================
 function NbCityConnected()
     local player = Players[Game.GetActivePlayer()]
 	local nbvilles = player:GetNumCities()
@@ -56,8 +58,11 @@ end
 GameEvents.PlayerDoTurn.Add(UBKH)
 
 --=============================================================================================
---KH_GG_GA
+--KH_Viribus Unitis
 --=============================================================================================
+
+
+
 
 
 

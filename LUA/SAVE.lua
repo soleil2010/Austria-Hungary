@@ -2,187 +2,7 @@
 -- Author: Florian
 -- DateCreated: 2/16/2019 10:59:23 AM
 local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
---==========================================================================================================================
--- UTILITY FUNCTIONS
---==========================================================================================================================
--- JFD_IsCivilisationActive
---------------------------------------------------------------     
-function JFD_IsCivilisationActive(civilisationID)
-        for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
-                local slotStatus = PreGame.GetSlotStatus(iSlot)
-                if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
-                        if PreGame.GetCivilization(iSlot) == civilisationID then
-                                return true
-                        end
-                end
-        end
-     
-        return false
-end
---------------------------------------------------------------
--- GE_Grenzer
---------------------------------------------------------------
-function GE_GetNumPromotions(unit)
-        local numPromotions = 0
-		if unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-        for promotion in GameInfo.UnitPromotions() do
-                if unit:IsHasPromotion(promotion.ID) then
-                        numPromotions = numPromotions + 1
-                end
-        end
-     
-        return numPromotions
-end
-end
 
-local bonusPerPromotion = 1
-local unitGrenzerID = GameInfoTypes["UNIT_TCM_GRENZER"]
-local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
-local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
-
-function GE_Grenzer(playerID)
-        local player = Players[playerID]
-        if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
-                for unit in player:Units() do
-                        if unit:GetUnitCombatType() == UnitGun and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                                local baseCombatStrength = unit:GetBaseCombatStrength()
-								if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-									unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-								end
-								
-                        end
-                end
-        end
-end
-     
-if JFD_IsCivilisationActive(civilisationID) then
-GameEvents.UnitPromoted.Add(GE_Grenzer)
-GameEvents.UnitUpgraded.Add(GE_Grenzer)
-        --GameEvents.PlayerDoTurn.Add(GE_Grenzer)
-end
-
---====
-
-local civilisationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
---==========================================================================================================================
--- UTILITY FUNCTIONS
---==========================================================================================================================
--- JFD_IsCivilisationActive
---------------------------------------------------------------     
-function JFD_IsCivilisationActive(civilisationID)
-        for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
-                local slotStatus = PreGame.GetSlotStatus(iSlot)
-                if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
-                        if PreGame.GetCivilization(iSlot) == civilisationID then
-                                return true
-                        end
-                end
-        end
-     
-        return false
-end
---------------------------------------------------------------
--- GE_Grenzer from TCM's Austria-Hungary(OLD)
---------------------------------------------------------------
-function GE_GetNumPromotions(unit)
-        local numPromotions = 0
-			if unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-				for promotion in GameInfo.UnitPromotions() do
-						if unit:IsHasPromotion(promotion.ID) then
-							numPromotions = numPromotions + 1
-						end
-				end
-			end
-		return numPromotions
-end
-
-local bonusPerPromotion = 1
-local unitGrenzerID = GameInfoTypes["UNIT_TCM_GRENZER"]
-local unitGWIID = GameInfoTypes["UNIT_GREAT_WAR_INFANTRY"]
-local unitInfantryID = GameInfoTypes["UNIT_INFANTRY"]
-local unitMechInfantryID = GameInfoTypes["UNIT_MECHANIZED_INFANTRY"]
-local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
-local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
-
-
-function GE_Grenzer(playerID)
-        local player = Players[playerID]
-        if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
-                for unit in player:Units() do
-                        if unit:GetUnitType() == unitGrenzerID then
-								local baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
-								if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-									unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-									end
-							elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-									local baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat
-									if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-										unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-										end
-									elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-									local baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat 
-											if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-												unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-												end
-												elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-													local baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat 
-														if baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-														unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-														end
-								
-								
-                        end
-				end
-			end
-end
-     
-if JFD_IsCivilisationActive(civilisationID) then
-GameEvents.UnitPromoted.Add(GE_Grenzer)
-GameEvents.UnitUpgraded.Add(GE_Grenzer)
-GameEvents.PlayerDoTurn.Add(GE_Grenzer)
-end
-
---===== Versions épurée
-function GE_Grenzer(playerID)
-    local player = Players[playerID]
-    local baseCombatStrength
-
-    if (player:GetCivilizationType() == civilisationID and player:IsEverAlive()) then
-            for unit in player:Units() do
-                    if unit:GetUnitType() == unitGrenzerID then
-                            baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
-                    elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                            baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat
-                    elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                            baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat
-                    elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                            baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat
-                    end
-                    if (unit:GetUnitType() == unitGrenzerID or unit:GetUnitType() == unitGWIID or unit:GetUnitType() == unitInfantryID or unit:GetUnitType() == unitMechInfantryID) and baseCombatStrength < (baseCombatStrength + bonusPerPromotionGE_GetNumPromotions(unit)) then
-                        unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotionGE_GetNumPromotions(unit))
-                    end
-            end
-        end
-end
-
---====
---==========================================================================================================================
--- UTILITY FUNCTIONS
---==========================================================================================================================
--- JFD_IsCivilisationActive
---------------------------------------------------------------     
-function JFD_IsCivilisationActive(civilisationID)
-        for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
-                local slotStatus = PreGame.GetSlotStatus(iSlot)
-                if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
-                        if PreGame.GetCivilization(iSlot) == civilisationID then
-                                return true
-                        end
-                end
-        end
-     
-        return false
-end
 --====================================================================
 local iPolicy = GameInfoTypes["POLICY_D_UA"]
 
@@ -272,39 +92,7 @@ end
 GameEvents.PlayerDoTurn.Add(NbVilles)
 
 
-Events.PlayerEraChanged.Add(
-function(playerID)
-	local pPlayer = Players[playerID]
-	if (pPlayer:IsAlive()) then
-		for pCity in pPlayer:Cities() do
-			local pBuilding = GameInfoTypes.BUILDING_IGLOO
-			local pBuildClass = GameInfoTypes.BUILDINGCLASS_GRANARY
-			local culture = GameInfoTypes.YIELD_CULTURE
-			if (pCity:IsHasBuilding(pBuilding)) then
 
-				if (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_INFORMATION) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 8)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_ATOMIC) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 7)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_MODERN) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 6)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 5)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 4)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 3)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 2)
-				elseif (pPlayer:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT) then
-					pCity:SetBuildingYieldChange(pBuildClass, culture, 1)
-				else break end
-			end
-		end
-	end
-end)
-
-Events.PlayerEraChanged.Add(fnQuo_FreeCivicBoostOnEraChange);
 --[[
 --== compte ville
 function NbVilles(PlayerID)
@@ -326,60 +114,7 @@ function NbVilles(PlayerID)
 end
 GameEvents.PlayerDoTurn.Add(NbVilles)
 --[[
-function EraScaling(PlayerID)
-local player = Players[PlayerID]
---local eraID = player:GetCurrentEra()
-	if player:GetCivilizationType() == civilizationID then
-		for city in player:Cities() do
-		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
-		print("hasBuild ok")
-			--if player:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT then
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
-					--print("ERA OK")
-				if player:GetCurrentEra() == GameInfoTypes.ERA_INFORMATION then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 16)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 16)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 8)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_ATOMIC then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 14)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 10)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 10)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 5)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 8)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 8)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 6)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 6)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 3)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 2)
-				--elseif player:GetCurrentEra() == GameInfoTypes.ERA_ANCIENT then
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 2)
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 2)
-					--city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 1)
-					print("ERA OK")
-					else
-					break
-			end
-		end
-		end
-	end
-end
-GameEvents.PlayerDoTurn.Add(EraScaling)
-GameEvents.PlayerEnteredNewEra.Add(EraScaling)
+
 
 --=========================================================
 function UAConnection(PlayerID)
@@ -445,5 +180,129 @@ end
 end
 --GameEvents.CityConnections.Add(UAConnection)
 GameEvents.PlayerDoTurn.Add(UAConnection)
+--=======
+local tGunUnits = {}
+for row in GameInfo.Units("CombatClass='UNITCOMBAT_GUN'") do
+     tGunUnits[row.ID] = row.ID
+     print("blah and blah and more blah")
+endand another example:
+Code:
+----------------------------------------------------------------------------------------------------------------------------------------
+-- Get correct UnitID for the player from within a UnitClass
+-- the UnitID for the default unit within the UnitClass and the player object is passed to the function
+-- so you would use as like: "local iUnitID = GetCivSpecificUnitForDefaultUnit(pPlayer, GameInfoTypes.UNIT_MUSKETMAN)"
+----------------------------------------------------------------------------------------------------------------------------------------
 
+function GetCivSpecificUnitForDefaultUnit(pPlayer, iDefaultUnitLoaded)
+     local sUnitClass = GameInfo.Units[iDefaultUnitLoaded].Class
+     local sCivilizationName = GameInfo.Civilizations[pPlayer:GetCivilizationType()].Type
+     local sDefaultUnit = GameInfo.Units[iDefaultUnitLoaded].Type
+     for row in GameInfo.UnitClasses("Type='" .. sUnitClass .. "'") do
+          if row.DefaultUnit ~= "NULL" and row.DefaultUnit ~= "null" and row.DefaultUnit ~= "NONE" and row.DefaultUnit ~= -1 and row.DefaultUnit ~= nil then
+               sDefaultUnit = row.DefaultUnit
+          end
+     end
+     for row in GameInfo.Civilization_UnitClassOverrides("CivilizationType='" .. sCivilizationName .. "'") do
+          if row.UnitClassType == sUnitClass then
+               if row.UnitType ~= "NULL" and row.UnitType ~= "null" and row.UnitType ~= "NONE" and row.UnitType ~= -1 and row.UnitType ~= nil then
+                    return GameInfoTypes[row.UnitType]
+               end
+          end
+     end
+     return GameInfoTypes[sDefaultUnit]
+end
+--[[
+function ViribusUnitis(PlayerID)
+	local player = Players[PlayerID]
+ 	print("VIri 1")
+	if player:GetCivilizationType() == civilizationID then
+	for unit in player:Units() do
+		if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) then
+	local Vunit = player:GetUnitByID()
+	local unitCombat = GameInfo.Units[Vunit:GetUnitType()].Combat
+	print(unitCombat.."cette unité a")
+	local StrenghtUnit = Vunit:GetBaseCombatStrength()
+	print(StrenghtUnit.."cette unité a")
+	print("VIri 2")
+	unit:SetBaseCombatStrength(StrenghtUnit + (1.02*(NbCityConnected()+1)))
+	--*(1.02*NbCityConnected()
+	print("VIri 3")
+	end
+	end
+	end
+end
+GameEvents.PlayerDoTurn.Add(ViribusUnitis)
 
+--=============================================================================================
+--KH_Viribus Unitis
+--=============================================================================================
+function ViribusUnitis(PlayerID)
+    local player = Players[PlayerID]
+    local baseCombatStrength
+	local i=0
+
+    if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
+        for unit in player:Units() do
+            if (unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS)) then
+
+			local sUnit = unit:GetBaseCombatStrength()
+			print("ma New force est de "..sUnit)
+				i = i+1
+				print(i.." virivus UNITIS!!!!")
+
+				local unitType = unit:GetUnitType();
+				print("mon unite est "..unit:GetName().." et son id est "..unitType);
+				
+				local force=GameInfo.Units[unit:GetUnitType()].Combat;
+				print("mon ancienne force est de "..force)
+
+				unit:SetBaseCombatStrength(force + (1.02*(NbCityConnected()+1)))
+
+				local forces=GameInfo.Units[unit:GetUnitType()].Combat+100;
+				print("ma nouvelle force est de "..forces)
+				print("Connection = " ..  NbCityConnected())  
+				end
+		end
+	end
+end
+GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+
+--=============================================================================================
+--KH_Viribus Unitis
+--=============================================================================================
+function ViribusUnitis(PlayerID)
+    local player = Players[PlayerID]
+    local baseCombatStrength
+	local i=0
+
+    if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
+        for unit in player:Units() do
+            if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN then
+				local sUnit = unit:GetBaseCombatStrength()
+				print("ma New force est de "..sUnit)
+				i = i+1
+				print(i.." virivus UNITIS!!!!")
+
+				local unitType = unit:GetUnitType();
+				print("mon unite est "..unit:GetName().." et son id est "..unitType);
+				
+				local force = GameInfo.Units[unit:GetUnitType()].Combat;
+				print("mon ancienne force est de "..force)
+
+				unit:SetBaseCombatStrength(force + (0.5*(NbCityConnected())))
+
+				--local forces=GameInfo.Units[unit:GetUnitType()].Combat+100;
+				print("ma nouvelle force est de "..force)
+				print("Connection = " ..  NbCityConnected())
+				elseif unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_SIEGE then
+						local rUnitType = unit:GetUnitType();
+						print("mon unite est "..unit:GetName().." et son id est "..rUnitType);
+						local rForce = GameInfo.Units[unit:GetUnitType()].RangedCombat;
+						unit:SetBaseRangedCombatStrength(rForce + (0.5*(NbCityConnected())))
+						print("ma nouvelle force est de "..rForce) 
+				end
+		end
+	end
+end
+GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+]]

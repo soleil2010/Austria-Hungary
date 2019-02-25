@@ -20,6 +20,22 @@ function JFD_IsCivilisationActive(civilizationID)
      
         return false
 end
+
+--=============================================
+--NBConnectionCity
+--=============================================
+function NbCityConnected()
+    local player = Players[Game.GetActivePlayer()]
+	local nbvilles = player:GetNumCities()
+	local isConnected=0
+	for city in player:Cities() do
+		print(nbvilles.." ville(s) construite(s)")
+		if (player:IsCapitalConnectedToCity(city) and player:GetCivilizationType() == civilizationID ) then
+			isConnected = isConnected+1
+		end
+	end
+	return isConnected
+end
 --------------------------------------------------------------
 -- GE_Grenzer from TCM's Austria-Hungary
 --------------------------------------------------------------
@@ -170,3 +186,35 @@ function CheckTrading(PlayerID,CityID)
 		end
 end
 GameEvents.CityConstructed.Add(CheckTrading)
+--=============================================================================================
+--KH_Viribus Unitis
+--=============================================================================================
+function ViribusUnitis(PlayerID)
+    local player = Players[PlayerID]
+    local baseCombatStrength
+	local i=0
+
+    if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
+        for unit in player:Units() do
+            if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN then
+				local sUnit = unit:GetBaseCombatStrength()
+
+				i = i+1
+
+				local unitType = unit:GetUnitType();
+				
+				local force = GameInfo.Units[unit:GetUnitType()].Combat;
+
+				unit:SetBaseCombatStrength(force + (0.35*(NbCityConnected())))
+
+				elseif unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_SIEGE then
+						local rUnitType = unit:GetUnitType();
+
+						local rForce = GameInfo.Units[unit:GetUnitType()].RangedCombat;
+
+						unit:SetBaseRangedCombatStrength(rForce + (0.35*(NbCityConnected())))
+				end
+		end
+	end
+end
+GameEvents.PlayerDoTurn.Add(ViribusUnitis)
