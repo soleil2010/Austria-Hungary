@@ -53,11 +53,17 @@
     <ReloadUnitSystem>true</ReloadUnitSystem>
     <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
     <ModContent>
-      <Content xmlns="">
+      <Content>
         <Type>InGameUIAddin</Type>
-        <Name>Grenzer_Promotions</Name>
-        <Description>Grenzer</Description>
-        <FileName>LUA/TCM_Functions.lua</FileName>
+        <Name>teste11</Name>
+        <Description>ok</Description>
+        <FileName>LUA/TESTE.lua</FileName>
+      </Content>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Fonctions</Name>
+        <Description>base</Description>
+        <FileName>LUA/Base_functions.lua</FileName>
       </Content>
     </ModContent>
   </PropertyGroup>
@@ -190,11 +196,15 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="LUA\BASE_LUA_TCM.lua">
+    <Content Include="LUA\Base_functions.lua">
       <SubType>Lua</SubType>
-      <ImportIntoVFS>True</ImportIntoVFS>
+      <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
-    <Content Include="LUA\TCM_Functions.lua">
+    <Content Include="LUA\FloTeste.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\SAVE.lua">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>

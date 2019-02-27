@@ -226,8 +226,8 @@ VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRAN
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
-			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,						PortraitIndex)
-SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3
+			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,		Help,																			Civilopedia,																																																																																																																																																														Strategy,																																											ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, Happiness, IconAtlas,					PortraitIndex, CapitalOnly)
+SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'When the Great Work Slot is filled, gain +2 [ICON_GOLDEN_AGE] Golden Age points.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb, HurryCostModifier, GreatWorkSlotType, GreatWorkCount, 2,		  ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3,				1
 FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';		
 
 --==========================================================================================================================	
@@ -235,7 +235,8 @@ FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';
 --==========================================================================================================================					
 INSERT INTO Building_YieldChanges 
 			(BuildingType, 					YieldType,				Yield)
-VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		5);
+VALUES		('BUILDING_TCM_CONCERT_HALL', 	'YIELD_SCIENCE',		5),
+			('BUILDING_TCM_CONCERT_HALL', 	'YIELD_CULTURE',		1);
 --==========================================================================================================================	
 -- Building_Flavors
 --==========================================================================================================================					
@@ -243,6 +244,12 @@ INSERT INTO Building_Flavors
 			(BuildingType, 					FlavorType,				Flavor)
 VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15);
+
+--Building_FreeUnits XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
+
+INSERT INTO Building_FreeUnits
+			(BuildingType,				UnitType,		NumUnits)
+VALUES		('BUILDING_TCM_CONCERT_HALL','UNIT_GREAT_GENERAL', 4);
 --==========================================================================================================================
 --==========================================================================================================================	
 -- Units
@@ -305,7 +312,8 @@ INSERT INTO UnitPromotions
 VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'More CityConnection = More power', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
 		('PROMOTION_GRENZSCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
 
-
+UPDATE UnitPromotions SET IconAtlas = 'extraPromo_Atlas' WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
+UPDATE UnitPromotions SET PortraitIndex = '60' WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
 --==========================================================================================================================
 -- FREE PROMOTION:  GRENZER to RIFLEMAN
 --==========================================================================================================================
@@ -332,7 +340,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_RECON', 'PROMOTION
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_HELICOPTER', 'PROMOTION_VIRIBUS_UNITIS');
 
 --=================================
---Pour test VIRIBUS UNITIS à effacer après
+--Pour test VIRIBUS UNITIS XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
 --=================================
 INSERT INTO Trait_DomainFreeExperienceModifier 
 		(TraitType, 								DomainType, 	Modifier)
@@ -341,7 +349,7 @@ VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_LAND', 	600),
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_AIR', 	600);
 
 --==========================================================================================================================
--- Civilization_FreeBuildingClasses à effacer après
+-- Civilization_FreeBuildingClasses XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
 --==========================================================================================================================		
 INSERT INTO Civilization_FreeBuildingClasses 
 			(CivilizationType, 						BuildingClassType)
