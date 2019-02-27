@@ -1,83 +1,64 @@
---==================================
---count promotion
---==================================
+ --===========================================
+ --Teste Dummy BuildingClass
+ --===========================================
 
-ALTER TABLE UnitPromotions ADD NumberPromotion SET DEFAULT 0
+INSERT INTO BuildingClasses
+			(Type,						DefaultBuilding,	NoLimit)
+VALUES		('BUILDINGCLASS_DF_LIBRARY', 'BUILDING_DF_LIBRARY', 1);
 
-UPDATE TABLE UnitPromotions
-			SELECT NumberPromotion
-			CASE
-			WHEN 'PromotionType.ID' then 'NumberPromotion' = 'NumberPromotion' + 1
-			END;
+--Buildings
 
-UPDATE TABLE PROMOTION_VIRIBUS_UNITIS
-			SELECT UnitType
-			CASE
-			WHEN UnitType = 'UNIT_PATHFINDER' THEN SET CombatPercent = 2*'NumberPromotion'
-			END;
-
---=============================
---UPDATE Civilization_FreeBuildingClasses
---SET FreeBuilding = 'BUILDING_BARRACKS',
---SET FreeBuilding = 'BUILDING_ARMORY';
+INSERT INTO Buildings
+			(Type,				BuildingClass,				Description, GoldMaintenance, Cost, FaithCost, GreatWorkCount, NeverCapture, NukeImmune, ConquestProb, HurryCostModifier, IconAtlas,		PortraitIndex, IsDummy)
+VALUES		('BUILDING_DF_LIBRARY','BUILDINGCLASS_DF_LIBRARY',	'Teste',	 0,					-1,		-1,			-1,				1,			1,			0,			-1,				'CIV_COLOR_ATLAS',		0,			1);
 
 
---==========================================================================================================================
--- GAZEBO COMMUNITY PATCH
---==========================================================================================================================
--- COMMUNITY
-------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS COMMUNITY (Type TEXT, Value INTEGER);
 
---TESTATURE
+--Building_YieldFromGPExpend
 
---=================================
---Pour test VIRIBUS UNITIS
---=================================
-INSERT INTO Trait_DomainFreeExperienceModifier 
-		(TraitType, 								DomainType, 	Modifier)
-VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_LAND', 	600),
-		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_SEA', 	600),
-		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'DOMAIN_AIR', 	600);
---=================================
---Pour test Promotions gratuites
---=================================
-INSERT INTO Unit_FreePromotions
-		(UnitType, 					PromotionType)
-SELECT	'UNIT_TCM_GRENZER',			PromotionType
-FROM Unit_FreePromotions WHERE UnitType = 'UNIT_RIFLEMAN';
+INSERT INTO Building_YieldFromGPExpend
+			(BuildingType, YieldType, Yield)
+VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 1),
+			('BUILDING_DF_LIBRARY', 'YIELD_PRODUCTION', 50);
 
-INSERT INTO Unit_FreePromotions
-		(UnitType, 					PromotionType)
-SELECT	'UNIT_PATHFINDER',			PromotionType
-FROM Unit_FreePromotions WHERE UnitType = 'UNIT_SCOUT';
 
-INSERT INTO Unit_FreePromotions 
-		(UnitType, 				PromotionType)
-VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_VIRIBUS_UNITIS'),
-		('UNIT_PATHFINDER', 	'PROMOTION_VIRIBUS_UNITIS'),
-		('UNIT_TCM_GRENZER', 	'PROMOTION_DRILL_1');
+--=============================================
+--Policy Dummy for KH
+--=============================================
+INSERT INTO Policies
+		(Type,			description,				IsDummy)
+VALUES	('POLICY_D_KH','testPol',					1);
 
---==========================================================================================================================
--- Civilization_FreeBuildingClasses
---==========================================================================================================================		
-INSERT INTO Civilization_FreeBuildingClasses 
-			(CivilizationType, 						BuildingClassType)
-VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_BARRACKS'),
-			('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'BUILDINGCLASS_ARMORY');
+INSERT INTO Policy_GreatPersonExpendedYield
+		(PolicyType,	GreatPersonType,	YieldType,		Yield)
+VALUES	('POLICY_D_KH',	'GREATPERSON_ADMIRAL'	,'YIELD_SCIENCE', 100),
+		('POLICY_D_KH',	'GREATPERSON_GENERAL'	,'YIELD_CULTURE', 100);
 
---==========================================================================================================================
--- Civilization_FreeUnits_FOR_TEST
+ --===========================================
+ --Dummies
+ --===========================================
+
+INSERT INTO BuildingClasses
+			(Type,							DefaultBuilding,		NoLimit)
+VALUES		('BUILDINGCLASS_DF_CONNECTED', 'BUILDING_DF_CONNECTED',		 1);
+
+
+--=============================================
+--Buildings
+--=============================================
+
+INSERT INTO Buildings
+			(Type,				BuildingClass,						Description,	GoldMaintenance,		Cost, FaithCost, GreatWorkCount, NeverCapture, NukeImmune, ConquestProb, HurryCostModifier, IconAtlas,		PortraitIndex, IsDummy)
+VALUES		('BUILDING_DF_CONNECTED','BUILDINGCLASS_DF_CONNECTED',	'DummyConnector',	 0,					-1,		-1,			-1,				1,			1,			0,			-1,				'CIV_COLOR_ATLAS',		0,			1);
+
+
 --==========================================================================================================================	
---INSERT INTO Civilization_FreeUnits 
---			(CivilizationType, 						UnitClassType,		Count, UnitAIType)
---VALUES		('CIVILIZATION_TCM_AUSTRIA_HUNGARY', 	'UNIT_TCM_GRENZER', 2, UNITAI_ATTACK);
---==========================================================================================================================
---Promotion	
---==========================================================================================================================
+-- Building_YieldChanges
+--==========================================================================================================================					
+INSERT INTO Building_YieldChanges 
+			(BuildingType, 					YieldType,				Yield)
+VALUES		('BUILDING_DF_CONNECTED',		'YIELD_PRODUCTION',		2),
+			('BUILDING_DF_CONNECTED',		'YIELD_GOLD',			2),
+			('BUILDING_DF_CONNECTED',		'YIELD_FAITH',			1);
 
-INSERT INTO UnitPromotions 
-		(Type, 										Description, 								Help, 											Sound, 		CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	NearbyEnemyCombatMod,	NearbyEnemyCombatRange, MovesChange,	AoEDamageOnMove,	ExperiencePercent,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
-VALUES	('PROMOTION_VIRIBUS_UNITIS', 				'Viribus Unitis', 		'More Promotion = More power', 		'AS2D_IF_LEVELUP', 	1, 					0, 			0, 					0,					0,						0,				0,					0,					59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'TXT_KEY_PROMOTION_JFD_DEATHS_HEAD');
-UPDATE UnitPromotions SET CombatPercent = 2 WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
---==========================================================================================================================
+ 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <ProjectGuid>{d1727c70-535a-4f1e-824a-2245be420cbc}</ProjectGuid>
-    <Name>TCM's Austria-Hungary Empire</Name>
+    <Name>TCM's Austria-Hungary Empire(1)</Name>
     <Guid>c3b136ab-bb13-460e-ab97-801d9dd8bcd6</Guid>
     <ModVersion>1</ModVersion>
     <Stability>Alpha</Stability>
@@ -25,12 +25,17 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/GameCore.sql</FileName>
+        <FileName>SQL/MODSupport.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>SQL/Test_Florian.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/GameCore.sql</FileName>
       </Action>
       <Action>
         <Set>OnModActivated</Set>
@@ -45,6 +50,22 @@
     </ModActions>
     <ModDependencies>
     </ModDependencies>
+    <ReloadUnitSystem>true</ReloadUnitSystem>
+    <ReloadStrategicViewSystem>true</ReloadStrategicViewSystem>
+    <ModContent>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>teste11</Name>
+        <Description>ok</Description>
+        <FileName>LUA/TESTE.lua</FileName>
+      </Content>
+      <Content>
+        <Type>InGameUIAddin</Type>
+        <Name>Fonctions</Name>
+        <Description>base</Description>
+        <FileName>LUA/Base_functions.lua</FileName>
+      </Content>
+    </ModContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
     <OutputPath>.</OutputPath>
@@ -175,7 +196,35 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
+    <Content Include="LUA\Base_functions.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\BASE_LUA_TCM.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>True</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\FloTeste.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\SAVE.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="LUA\TESTE.lua">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
     <Content Include="SQL\ArtDef.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\MODSupport.sql">
+      <SubType>Lua</SubType>
+      <ImportIntoVFS>False</ImportIntoVFS>
+    </Content>
+    <Content Include="SQL\test_diogo.sql">
       <SubType>Lua</SubType>
       <ImportIntoVFS>False</ImportIntoVFS>
     </Content>
