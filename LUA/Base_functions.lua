@@ -10,7 +10,7 @@ local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 
 --=============================================================================================
 -- Name:		JFD_IsCivilisationActive
--- Description:	
+-- Description:	Défini si la civ est en jeu
 --=============================================================================================     
 function JFD_IsCivilisationActive(civilizationID)
     for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
@@ -91,49 +91,51 @@ function GE_Grenzer(playerID)
 end
 
 --=============================================================================================
--- Name:		UA Scaling Era
--- Description:	
+-- Name:		UA(Unique ability) Scaling Era
+-- Description:	Change la valeur des yields (chaques villes connectées à la capital +2Prod, +2Gold, +1faith)
+--              avec cette fonction, ces valeurs augmentent avec les ères				
 --=============================================================================================
 function EraScaling(PlayerID)
 	local player = Players[PlayerID]
+	local DummyUA = GameInfoTypes.BUILDINGCLASS_DF_CONNECTED
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
 				if player:GetCurrentEra() == GameInfoTypes.ERA_FUTURE then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 16)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 16)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 8)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 16)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 16)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 8)
 				elseif player:GetCurrentEra() == GameInfoTypes.POSTMODERN then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 14)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 14)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 7)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 14)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 14)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 7)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 12)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 12)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 6)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 12)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 12)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 6)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 10)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 10)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 5)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 10)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 10)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 5)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 8)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 8)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 4)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 8)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 8)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 4)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 6)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 6)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 3)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 6)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 6)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 3)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
 
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_PRODUCTION, 4)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_GOLD, 4)
-					city:SetBuildingYieldChange(GameInfoTypes.BUILDINGCLASS_DF_CONNECTED, YieldTypes.YIELD_FAITH, 2)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 2)
 				end
 			end
 		end
@@ -142,7 +144,8 @@ end
 
 --=============================================================================================
 -- Name:		UAConnectionCities
--- Description:	
+-- Description:	Quand une ville(non capital) est connectée à la capital, elle gagne un bâtiment dummy (fantôme)
+--				qui va lui donner son bonus UA (unique ability " +2prod, +2gold, +1faith)
 --=============================================================================================
 function UAConnection(PlayerID)
 	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
@@ -159,7 +162,7 @@ end
 
 --=============================================================================================
 -- Name:		UAConnectionCapital
--- Description:	
+-- Description:	UB Capital gagne automatiquement le bonus (unique ability " +2prod, +2gold, +1faith)
 --=============================================================================================
 function UAFranzCapital(PlayerID)
 	local BuildingDummyForConnected = GameInfoTypes.BUILDING_DF_CONNECTED
@@ -168,7 +171,7 @@ function UAFranzCapital(PlayerID)
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 			if city:IsCapital() then
-				city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+				city:SetNumRealBuilding(BuildingDummyForConnected,1)
 			end
 		end
 	end
@@ -176,7 +179,7 @@ end
 
 --=============================================================================================
 -- Name:		UB Kaiserliche Hofbibliothek Connection Capital
--- Description:	
+-- Description:	UB(Unique Building) Gagne +1 de culture par connection (capital uniquement)
 --=============================================================================================
 function UBKH(PlayerID)
 	local player = Players[PlayerID]
@@ -184,11 +187,8 @@ function UBKH(PlayerID)
 	local KHBuildingClass = GameInfoTypes.BUILDINGCLASS_NATIONAL_COLLEGE
 
 	if player:GetCivilizationType() == civilizationID then
-		print("ok")
 		for city in player:Cities() do
-			print("ok1")
 			if city:IsHasBuilding(KHBuilding) then
-				print("ok2")
 				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, NbCityConnected())
 			end
 		end
@@ -197,7 +197,7 @@ end
 
 --=============================================================================================
 -- Name:		UB Kaiserliche Hofbibliothek_GG_GA
--- Description:	
+-- Description:	UB (Unique Building) gagne culture flat quand generel expend et science quand amiral expend (Dummy policy) (voir sql)
 --=============================================================================================
 function CheckTrading(PlayerID,CityID)
     local player = Players[PlayerID]
