@@ -149,13 +149,16 @@ function UAConnection(PlayerID)
 
 if player:GetCivilizationType() == civilizationID then
 	for city in player:Cities() do
-		if Player:IsCapitalConnectedToCity(city) and player:IsEverAlive() and not city:IsCapital() then
+		if Player:IsCapitalConnectedToCity(city) and player:IsEverAlive() and not city:IsCapital() and (not bDirect) then
 		city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+		print("true ok")
 		end
 	end
 end
+return (not bDirect and Player:IsCapitalConnectedToCity(city))
 end
-GameEvents.PlayerDoTurn.Add(UAConnection)
+GameEvents.CityConnections.Add(UAConnection) 
+--GameEvents.PlayerDoTurn.Add(UAConnection)
 --=====================================================
 --UAConnectionCapital
 --=====================================================
@@ -210,10 +213,9 @@ GameEvents.CityConstructed.Add(CheckTrading)
 --=============================================================================================
 --KH_Viribus Unitis
 --=============================================================================================
-function ViribusUnitis(PlayerID)
+function ViribusUnitis(PlayerID,bDirect)
     local player = Players[PlayerID]
     local baseCombatStrength
-	local i=0
 	local NBDummy = player:CountNumBuildings(GameInfoTypes.BUILDING_DF_CONNECTED)
 	local NbConnect = NbCityConnected()
 
@@ -221,8 +223,6 @@ function ViribusUnitis(PlayerID)
         for unit in player:Units() do
             if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN then
 				local sUnit = unit:GetBaseCombatStrength()
-
-				i = i+1
 
 				local unitType = unit:GetUnitType();
 				
@@ -237,7 +237,9 @@ function ViribusUnitis(PlayerID)
 
 						unit:SetBaseRangedCombatStrength(rForce + (0.15*(NbCityConnected())))
 				end
+				return (not bDirect)
 		end
 	end
 end
-GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+GameEvents.CityConnections.Add(ViribusUnitis)
+--GameEvents.PlayerDoTurn.Add(ViribusUnitis)
