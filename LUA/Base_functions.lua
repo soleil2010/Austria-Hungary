@@ -2,17 +2,24 @@
 -- Authors: Florian & Diogo
 -- DateCreated: 2/17/2019 12:51:16 PM
 --------------------------------------------------------------
-local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 --=============================================================================================
 -- UTILITY FUNCTIONS
 --=============================================================================================
 
+local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"] --cache the ID of PROMOTION_GRENZSCHUTZ
+
+local tCombatStrengths = {}
+for unit in DB.Query("SELECT ID, Combat FROM Units WHERE Combat > 0 AND Cost > 0") do
+    tCombatStrengths[unit.ID] = unit.Combat;
+end
 
 --=============================================================================================
--- Name:		JFD_IsCivilisationActive
+-- Name:		JFD_IsCivilizationActive
+-- parameters:	civilization ID
 -- Description:	Défini si la civ est en jeu
 --=============================================================================================     
-function JFD_IsCivilisationActive(civilizationID)
+function JFD_IsCivilizationActive(civilizationID)
     for iSlot = 0, GameDefines.MAX_MAJOR_CIVS-1, 1 do
         local slotStatus = PreGame.GetSlotStatus(iSlot)
         if (slotStatus == SlotStatus["SS_TAKEN"] or slotStatus == SlotStatus["SS_COMPUTER"]) then
@@ -41,8 +48,10 @@ function NbCityConnected()
 end
 
 --=============================================================================================
--- Name:		GE_Grenzer from TCM's Austria-Hungary
--- Description:	Return the number of units with Grenzschutz promotions
+-- Name:		GE_GetNumPromotions
+-- parameters:	unit object
+-- Description:	Returns the number of promotions owned 
+--				by the unit having Grenzschutz promotion
 --=============================================================================================
 function GE_GetNumPromotions(unit)
 	local numPromotions = 0
@@ -61,34 +70,26 @@ end
 -- Descripion:	Each unit with Grenzschutz's promotion have more 
 --				power per number of promotion (+1 per promotion)
 --=============================================================================================
-function GE_Grenzer(playerID)
+
+
+function GE_Grenzer(playerID, unitID)
     local player = Players[playerID]
 	local bonusPerPromotion = 1
-	local unitGrenzerID = GameInfoTypes["UNIT_TCM_GRENZER"]
-	local unitGWIID = GameInfoTypes["UNIT_GREAT_WAR_INFANTRY"]
-	local unitInfantryID = GameInfoTypes["UNIT_INFANTRY"]
-	local unitMechInfantryID = GameInfoTypes["UNIT_MECHANIZED_INFANTRY"]
-	local GEPromotion = GameInfoTypes["PROMOTION_GRENZSCHUTZ"]
-	local UnitGun = GameInfoTypes["UNITCOMBAT_GUN"]
-    local baseCombatStrength
-
+    --you could remove the following if-statement so that the promotion also works if another player obtains the promotion/your UU (E.g. by City State-gift/when spawned in using Lua by another mod)
     if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
-        for unit in player:Units() do
-                if unit:GetUnitType() == unitGrenzerID then
-                        baseCombatStrength = GameInfo.Units["UNIT_TCM_GRENZER"].Combat
-                elseif unit:GetUnitType() == unitGWIID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                        baseCombatStrength = GameInfo.Units["UNIT_GREAT_WAR_INFANTRY"].Combat
-                elseif unit:GetUnitType() == unitInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                        baseCombatStrength = GameInfo.Units["UNIT_INFANTRY"].Combat
-                elseif unit:GetUnitType() == unitMechInfantryID and unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
-                        baseCombatStrength = GameInfo.Units["UNIT_MECHANIZED_INFANTRY"].Combat
-                end
-                if (unit:GetUnitType() == unitGrenzerID or unit:GetUnitType() == unitGWIID or unit:GetUnitType() == unitInfantryID or unit:GetUnitType() == unitMechInfantryID) and baseCombatStrength < (baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)) then
-                    unit:SetBaseCombatStrength(baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit))
-                end
+        unit = player:GetUnitByID(unitID) --we know which unit is upgraded, so we remove the loop over all units
+        if unit:IsHasPromotion(GEPromotion) then --any unit that has the promotion should get a bonus (since the unit can be an upgrade from the UU)
+            local baseCombatStrength = tCombatStrengths[unit:GetUnitType()] --obtain the cached combat strength of the unit
+            if baseCombatStrength then --if the unit is not in the table, then it doesn't have a (melee) combat strength
+                --unit has a melee combat strength; set it to the maximum of its base combat strength and the buff provided by the promotion
+                unit:SetBaseCombatStrength(math.max(baseCombatStrength, baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)));
+            end
         end
-    end
+    --note that all elseif's (for UNIT_MECHANIZED_INFNATRY and such) are removed; this code will work for any unit.
+    end --if you choose to remove the first if-statement, also remove this end
 end
+
+
 
 --=============================================================================================
 -- Name:		UA(Unique ability) Scaling Era
@@ -222,7 +223,7 @@ function ViribusUnitis(PlayerID)
 
     if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
         for unit in player:Units() do
-            if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and (unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN) then
+            if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN then
 				local baseCombatStrength = GameInfo.Units[unit:GetUnitType()].Combat;
 				unit:SetBaseCombatStrength(baseCombatStrength + (0.15*NbConnect))
 
@@ -235,7 +236,7 @@ function ViribusUnitis(PlayerID)
 end
 
 -- if is a player, events are executed
-if JFD_IsCivilisationActive(civilizationID) then
+if JFD_IsCivilizationActive(civilizationID) then
 	GameEvents.UnitPromoted.Add(GE_Grenzer)
 	GameEvents.UnitUpgraded.Add(GE_Grenzer)
 	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
@@ -244,5 +245,5 @@ if JFD_IsCivilisationActive(civilizationID) then
 	GameEvents.PlayerCityFounded.Add(UAFranzCapital)
 	GameEvents.PlayerDoTurn.Add(UBKH)
 	GameEvents.CityConstructed.Add(CheckTrading)
-	GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+	-- GameEvents.PlayerDoTurn.Add(ViribusUnitis)
 end
