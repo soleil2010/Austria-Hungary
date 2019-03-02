@@ -172,19 +172,19 @@
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Model\ausrm2.dds">
+    <Content Include="Art\Model\ausrm3.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Model\ausrm2_sref.dds">
+    <Content Include="Art\Model\ausrm3_sref.dds">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Model\civ5_ausrm2.fxsxml">
+    <Content Include="Art\Model\civ5_ausrm3.fxsxml">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>
-    <Content Include="Art\Model\civ5_ausrm2.gr2">
+    <Content Include="Art\Model\civ5_ausrm3.gr2">
       <SubType>Lua</SubType>
       <ImportIntoVFS>True</ImportIntoVFS>
     </Content>

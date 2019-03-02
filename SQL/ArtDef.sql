@@ -31,7 +31,7 @@ FROM ArtDefine_UnitMemberCombatWeapons WHERE (UnitMemberType = 'ART_DEF_UNIT_MEM
 --==========================================================================================================================
 INSERT INTO ArtDefine_UnitMemberInfos 	
 			(Type, 									Scale,  ZOffset, Domain, Model, 					MaterialTypeTag, MaterialTypeSoundOverrideTag)
-SELECT		('ART_DEF_UNIT_MEMBER_GRENZER'),		Scale,	ZOffset, Domain, ('civ5_ausrm2.fxsxml'),	MaterialTypeTag, MaterialTypeSoundOverrideTag
+SELECT		('ART_DEF_UNIT_MEMBER_GRENZER'),		Scale,	ZOffset, Domain, ('civ5_ausrm3.fxsxml'),	MaterialTypeTag, MaterialTypeSoundOverrideTag
 FROM ArtDefine_UnitMemberInfos WHERE (Type = 'ART_DEF_UNIT_MEMBER_WW1_INFANTRY');
 
 INSERT INTO ArtDefine_StrategicView(StrategicViewType, TileType, Asset)

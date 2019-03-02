@@ -18,8 +18,7 @@ VALUES		('BUILDING_DF_LIBRARY','BUILDINGCLASS_DF_LIBRARY',	'Teste',	 0,					-1,	
 
 INSERT INTO Building_YieldFromGPExpend
 			(BuildingType, YieldType, Yield)
-VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 1),
-			('BUILDING_DF_LIBRARY', 'YIELD_PRODUCTION', 50);
+VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 50);
 
 
 --=============================================

@@ -44,6 +44,7 @@ end
 -- Name:		GE_Grenzer from TCM's Austria-Hungary
 -- Description:	Return the number of units with Grenzschutz promotions
 --=============================================================================================
+--[[
 function GE_GetNumPromotions(unit)
 	local numPromotions = 0
 	if unit:IsHasPromotion(GameInfoTypes.PROMOTION_GRENZSCHUTZ) then
@@ -61,7 +62,6 @@ end
 -- Descripion:	Each unit with Grenzschutz's promotion have more 
 --				power per number of promotion (+1 per promotion)
 --=============================================================================================
-
 local bonusPerPromotion = 1
 local GEPromotion = GameInfoTypes.PROMOTION_GRENZSCHUTZ --cache the ID of PROMOTION_GRENZSCHUTZ
 
@@ -69,24 +69,30 @@ local tCombatStrengths = {}
 for row in DB.Query("SELECT ID, Combat FROM Units WHERE Combat > 0 AND Cost > 0") do
     tCombatStrengths[row.ID] = row.Combat;
 end
-
 --function GE_GetNumPromotions is defined here somewhere
 
+
 function GE_Grenzer(PlayerID, unitID)
+
     local player = Players[PlayerID]
     --you could remove the following if-statement so that the promotion also works if another player obtains the promotion/your UU (E.g. by City State-gift/when spawned in using Lua by another mod)
     if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
+	print("ok1")
         unit = player:GetUnitByID(unitID) --we know which unit is upgraded, so we remove the loop over all units
         if unit:IsHasPromotion(GEPromotion) then --any unit that has the promotion should get a bonus (since the unit can be an upgrade from the UU)
+		print("ok2")
             local baseCombatStrength = tCombatStrengths[unit:GetUnitType()] --obtain the cached combat strength of the unit
             if baseCombatStrength then --if the unit is not in the table, then it doesn't have a (melee) combat strength
                 --unit has a melee combat strength; set it to the maximum of its base combat strength and the buff provided by the promotion
                 unit:SetBaseCombatStrength(math.max(baseCombatStrength, baseCombatStrength + bonusPerPromotion*GE_GetNumPromotions(unit)));
+				print("ok3")
             end
         end
     --note that all elseif's (for UNIT_MECHANIZED_INFNATRY and such) are removed; this code will work for any unit.
     end --if you choose to remove the first if-statement, also remove this end
 end
+
+]]
 --=============================================================================================
 -- Name:		UA(Unique ability) Scaling Era
 -- Description:	Change la valeur des yields (chaques villes connectées à la capital +2Prod, +2Gold, +1faith)
@@ -151,7 +157,11 @@ function UAConnection(PlayerID)
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 			if Player:IsCapitalConnectedToCity(city) and player:IsEverAlive() and not city:IsCapital() then
-				city:SetNumRealBuilding(GameInfoTypes.BUILDING_DF_CONNECTED,1)
+				if city:GetWeLoveTheKingDayCounter() > 0 then
+				city:SetNumRealBuilding(BuildingDummyForConnected,2)
+				else 
+				city:SetNumRealBuilding(BuildingDummyForConnected,1)
+				end
 			end
 		end
 	end
@@ -168,7 +178,11 @@ function UAFranzCapital(PlayerID)
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 			if city:IsCapital() then
+				if city:GetWeLoveTheKingDayCounter() > 0 then
+				city:SetNumRealBuilding(BuildingDummyForConnected,2)
+				else
 				city:SetNumRealBuilding(BuildingDummyForConnected,1)
+				end
 			end
 		end
 	end
@@ -196,10 +210,13 @@ end
 -- Name:		UB Kaiserliche Hofbibliothek_GG_GA
 -- Description:	UB (Unique Building) gagne culture flat quand generel expend et science quand amiral expend (Dummy policy) (voir sql)
 --=============================================================================================
+local iPolicy = GameInfoTypes.POLICY_D_KH
+local eBuilding =  GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+
 function CheckTrading(PlayerID,CityID)
     local player = Players[PlayerID]
 	for city in player:Cities() do
-		if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(GameInfoTypes.BUILDING_TCM_CONCERT_HALL) then
+		if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(eBuilding) then
 			player:SetNumFreePolicies(1)
 			player:SetNumFreePolicies(0)
 			player:SetHasPolicy(iPolicy, true)
@@ -212,6 +229,7 @@ end
 --Description:	Melee and Gun units have a strength bonus per city connected to capital.
 --				Siege units have a ranged combat bonus per city connected to capital.
 --=============================================================================================
+
 function ViribusUnitis(PlayerID)
 	-- local NBDummy = player:CountNumBuildings(GameInfoTypes.BUILDING_DF_CONNECTED)
     local player = Players[PlayerID]
@@ -233,13 +251,13 @@ end
 
 -- if is a player, events are executed
 if JFD_IsCivilizationActive(civilizationID) then
-	GameEvents.UnitPromoted.Add(GE_Grenzer)
-	GameEvents.UnitUpgraded.Add(GE_Grenzer)
-	GameEvents.PlayerDoTurn.Add(GE_Grenzer)
+	--GameEvents.UnitPromoted.Add(GE_Grenzer)
+	--GameEvents.UnitUpgraded.Add(GE_Grenzer)
+	--GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 	GameEvents.PlayerDoTurn.Add(EraScaling)
 	GameEvents.PlayerDoTurn.Add(UAConnection)
 	GameEvents.PlayerCityFounded.Add(UAFranzCapital)
 	GameEvents.PlayerDoTurn.Add(UBKH)
 	GameEvents.CityConstructed.Add(CheckTrading)
-	GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+	--GameEvents.PlayerDoTurn.Add(ViribusUnitis)
 end
