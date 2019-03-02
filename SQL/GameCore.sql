@@ -252,13 +252,6 @@ INSERT INTO Building_Flavors
 			(BuildingType, 					FlavorType,				Flavor)
 VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15);
-
---Building_FreeUnits XXXXXXXXXXXXXXXX A EFFACER XXXXXXXXXXXXXXXXXXXXXXXX
-
-INSERT INTO Building_FreeUnits
-			(BuildingType,				UnitType,		NumUnits)
-VALUES		('BUILDING_TCM_CONCERT_HALL','UNIT_GREAT_GENERAL', 2),
-			('BUILDING_TCM_CONCERT_HALL','UNIT_MERCHANT', 2);
 --==========================================================================================================================
 --==========================================================================================================================	
 -- Units

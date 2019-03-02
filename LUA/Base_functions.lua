@@ -231,7 +231,6 @@ end
 --=============================================================================================
 
 function ViribusUnitis(PlayerID)
-	-- local NBDummy = player:CountNumBuildings(GameInfoTypes.BUILDING_DF_CONNECTED)
     local player = Players[PlayerID]
 	local NbConnect = NbCityConnected()
 
@@ -248,12 +247,68 @@ function ViribusUnitis(PlayerID)
 		end
 	end
 end
+--=============================================================================================
+--KH_Gold_EXPEND
+--=============================================================================================
+local eBuildingKH = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+local eBuildingDummyKH = GameInfoTypes.BUILDING_DF_LIBRARY
+local eBuildingLibrary = GameInfoTypes.BUILDING_LIBRARY
+
+
+-- adds bonus to barracks if TO is built
+function OnCityConstructionAddDummyForKH(iPlayer, iCity, eBuilding)
+	local pPlayer = Players[iPlayer]
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilizationID) then return end
+
+	if eBuilding == eBuildingKH then
+		local iNumberOfLibrary = pPlayer:CountNumBuildings(eBuildingLibrary)
+
+		if iNumberOfLibrary > 0 then
+			for city in pPlayer:Cities() do
+				local iCurrentLibrary = 0
+
+				if city:IsHasBuilding(eBuildingLibrary) then
+					city:SetNumRealBuilding(eBuildingDummyKH, 1)
+					iCurrentLibrary = iCurrentLibrary + 1
+
+					if iCurrentLibrary == iNumberOfLibrary then
+						break
+					end
+				end
+			end
+		end
+	elseif eBuilding == eBuildingLibrary then
+		local iNumberOfKH = pPlayer:CountNumBuildings(eBuildingKH)
+
+		if iNumberOfKH > 0 then
+			pPlayer:GetCityByID(iCity):SetNumRealBuilding(eBuildingDummyKH, 1)
+		end
+	end
+end
+
+function OnFoundAddDummyForKH(iPlayer, iX, iY)
+	local pPlayer = Players[iPlayer]
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilizationID) then return end
+
+	if pPlayer:CountNumBuildings(eBuildingKH) > 0 then
+
+		local pFoundCity = Map.GetPlot(iX, iY):GetWorkingCity()
+		if pFoundCity:IsHasBuilding(eBuildingLibrary) then
+
+			pFoundCity:SetNumRealBuilding(eBuildingDummyKH, 1)
+		end
+	end
+end
 
 -- if is a player, events are executed
 if JFD_IsCivilizationActive(civilizationID) then
 	--GameEvents.UnitPromoted.Add(GE_Grenzer)
 	--GameEvents.UnitUpgraded.Add(GE_Grenzer)
 	--GameEvents.PlayerDoTurn.Add(GE_Grenzer)
+	GameEvents.CityConstructed.Add(OnCityConstructionAddDummyForKH)
+	GameEvents.PlayerCityFounded.Add(OnFoundAddDummyForKH)
 	GameEvents.PlayerDoTurn.Add(EraScaling)
 	GameEvents.PlayerDoTurn.Add(UAConnection)
 	GameEvents.PlayerCityFounded.Add(UAFranzCapital)
