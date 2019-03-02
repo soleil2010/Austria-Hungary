@@ -25,11 +25,6 @@
       <Action>
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
-        <FileName>SQL/MODSupport.sql</FileName>
-      </Action>
-      <Action>
-        <Set>OnModActivated</Set>
-        <Type>UpdateDatabase</Type>
         <FileName>SQL/Test_Florian.sql</FileName>
       </Action>
       <Action>
@@ -46,6 +41,11 @@
         <Set>OnModActivated</Set>
         <Type>UpdateDatabase</Type>
         <FileName>SQL/ArtDef.sql</FileName>
+      </Action>
+      <Action>
+        <Set>OnModActivated</Set>
+        <Type>UpdateDatabase</Type>
+        <FileName>SQL/MODSupport.sql</FileName>
       </Action>
     </ModActions>
     <ModDependencies>

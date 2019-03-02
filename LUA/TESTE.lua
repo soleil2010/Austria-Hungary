@@ -82,7 +82,62 @@ end
 --KH_Viribus Unitis
 --=============================================================================================
 ]]
+local eBuildingKH = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+local eBuildingDummyKH = GameInfoTypes.BUILDING_DF_LIBRARY
+local eBuildingLibrary = GameInfoTypes.BUILDING_LIBRARY
+local eCivilizationGermany = GameInfoTypes.CIVILIZATION_GERMANY
 
+-- adds bonus to barracks if TO is built
+function OnCityConstructionAddDummyForKH(iPlayer, iCity, eBuilding)
+	local pPlayer = Players[iPlayer]
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilizationID) then return end
+
+	if eBuilding == eBuildingKH then
+		local iNumberOfLibrary = pPlayer:CountNumBuildings(eBuildingLibrary)
+
+		if iNumberOfBarracks > 0 then
+			for city in pPlayer:Cities() do
+				local iCurrentLibrary = 0
+
+				if city:IsHasBuilding(eBuildingLibrary) then
+					city:SetNumRealBuilding(eBuildingDummyKH, 1)
+					iCurrentBarracks = iCurrentBarracks + 1
+
+					if iCurrentBarracks == iNumberOfBarracks then
+						break
+					end
+				end
+			end
+		end
+	elseif eBuilding == eBuildingLibrary then
+		local iNumberOfKH = pPlayer:CountNumBuildings(eBuildingKH)
+
+		if iNumberOfTeutonicOrders > 0 then
+			pPlayer:GetCityByID(iCity):SetNumRealBuilding(eBuildingDummyKH, 1)
+		end
+	end
+end
+
+function OnFoundAddDummyForKH(iPlayer, iX, iY)
+	local pPlayer = Players[iPlayer]
+	
+	if not (pPlayer and pPlayer:GetCivilizationType() == civilizationID) then return end
+
+	if pPlayer:CountNumBuildings(eBuildingKH) > 0 then
+
+		local pFoundCity = Map.GetPlot(iX, iY):GetWorkingCity()
+		if pFoundCity:IsHasBuilding(eBuildingLibrary) then
+
+			pFoundCity:SetNumRealBuilding(eBuildingDummyKH, 1)
+		end
+	end
+end
+
+if Game.IsCivEverActive(eCivilizationGermany) then
+	GameEvents.CityConstructed.Add(OnCityConstructionAddDummyForKH)
+	GameEvents.PlayerCityFounded.Add(OnFoundAddDummyForKH)
+end
 
 
 
