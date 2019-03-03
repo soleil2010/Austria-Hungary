@@ -107,37 +107,37 @@ function EraScaling(PlayerID)
 				if player:GetCurrentEra() == GameInfoTypes.ERA_FUTURE then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 16)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 16)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 14)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 8)
 				elseif player:GetCurrentEra() == GameInfoTypes.POSTMODERN then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 14)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 14)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 10)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 7)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 12)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 12)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 8)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 6)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 10)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 10)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 6)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 5)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 8)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 8)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 4)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 4)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 6)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 6)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 3)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 3)
 				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 4)
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 4)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 2)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 2)
 				end
 			end
@@ -314,5 +314,5 @@ if JFD_IsCivilizationActive(civilizationID) then
 	GameEvents.PlayerCityFounded.Add(UAFranzCapital)
 	GameEvents.PlayerDoTurn.Add(UBKH)
 	GameEvents.CityConstructed.Add(CheckTrading)
-	--GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+	GameEvents.PlayerDoTurn.Add(ViribusUnitis)
 end

@@ -204,7 +204,7 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY');
 --==========================================================================================================================	
 INSERT INTO Traits 
 			(Type, 										Description, 																																																																			ShortDescription)
-VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'Cities connected to capital and capital gain +2[ICON_PRODUCTION], +2[ICON_GOLD], +1[ICON_PEACE] , double if city has « We Love The King Day », scaling with era.[NEWLINE]Melee, Gun and Siege units gain the promotion «Viribus Unitis» (+1[ICON_STRENGTH] per 6[ICON_CONNECTED])', 	'Crownlands');
+VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'Cities connected to capital and capital gain +2[ICON_PRODUCTION], +1[ICON_GOLD], +1[ICON_PEACE] , double if city has « We Love The King Day », scaling with era.[NEWLINE]Melee, Gun and Siege units gain the promotion «Viribus Unitis» (+1[ICON_STRENGTH] per 6[ICON_CONNECTED])', 	'Crownlands');
 --==========================================================================================================================
 -- AUDIO
 --==========================================================================================================================	
