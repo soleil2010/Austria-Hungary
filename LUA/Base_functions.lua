@@ -213,12 +213,12 @@ end
 local iPolicy = GameInfoTypes.POLICY_D_KH
 local eBuilding =  GameInfoTypes.BUILDING_TCM_CONCERT_HALL
 
-function CheckTrading(PlayerID,CityID)
+function CheckTrading(PlayerID,CityID,eBuilding)
     local player = Players[PlayerID]
 	for city in player:Cities() do
 		if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(eBuilding) then
-			player:SetNumFreePolicies(1)
-			player:SetNumFreePolicies(0)
+			--player:SetNumFreePolicies(1)
+			--player:SetNumFreePolicies(0)
 			player:SetHasPolicy(iPolicy, true)
 		end
 	end
