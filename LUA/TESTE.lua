@@ -2,7 +2,7 @@
 -- Author: Florian
 -- DateCreated: 2/16/2019 10:07:24 AM
 --------------------------------------------------------------
-local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+--local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 --[[
 --==========================================================================================================================
 -- UTILITY FUNCTIONS

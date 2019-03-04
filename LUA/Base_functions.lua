@@ -3,6 +3,7 @@
 -- DateCreated: 2/17/2019 12:51:16 PM
 --------------------------------------------------------------
 local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
+local eBuildingKH = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
 --=============================================================================================
 -- UTILITY FUNCTIONS
 --=============================================================================================
@@ -101,40 +102,48 @@ end
 function EraScaling(PlayerID)
 	local player = Players[PlayerID]
 	local DummyUA = GameInfoTypes.BUILDINGCLASS_DF_CONNECTED
+	local future = GameInfoTypes.ERA_FUTURE
+	local postmodern = GameInfoTypes.POSTMODERN
+	local modern = GameInfoTypes.ERA_MODERN
+	local industrial = GameInfoTypes.ERA_INDUSTRIAL
+	local renaissance = GameInfoTypes.ERA_RENAISSANCE
+	local medieval = GameInfoTypes.ERA_MEDIEVAL
+	local classical = GameInfoTypes.ERA_CLASSICAL
+
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
-				if player:GetCurrentEra() == GameInfoTypes.ERA_FUTURE then
+				if player:GetCurrentEra() == future then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 16)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 14)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 8)
-				elseif player:GetCurrentEra() == GameInfoTypes.POSTMODERN then
+				elseif player:GetCurrentEra() == postmodern then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 14)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 10)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 7)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MODERN then
+				elseif player:GetCurrentEra() == modern then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 12)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 8)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 6)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_INDUSTRIAL then
+				elseif player:GetCurrentEra() == industrial then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 10)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 6)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 5)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_RENAISSANCE then
+				elseif player:GetCurrentEra() == renaissance then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 8)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 4)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 4)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_MEDIEVAL then
+				elseif player:GetCurrentEra() == medieval then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 6)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 3)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 3)
-				elseif player:GetCurrentEra() == GameInfoTypes.ERA_CLASSICAL then
+				elseif player:GetCurrentEra() == classical then
 
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 4)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 2)
@@ -194,12 +203,11 @@ end
 --=============================================================================================
 function UBKH(PlayerID)
 	local player = Players[PlayerID]
-	local KHBuilding = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
 	local KHBuildingClass = GameInfoTypes.BUILDINGCLASS_NATIONAL_COLLEGE
 
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
-			if city:IsHasBuilding(KHBuilding) then
+			if city:IsHasBuilding(eBuildingKH) then
 				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, NbCityConnected())
 			end
 		end
@@ -211,14 +219,11 @@ end
 -- Description:	UB (Unique Building) gagne culture flat quand generel expend et science quand amiral expend (Dummy policy) (voir sql)
 --=============================================================================================
 local iPolicy = GameInfoTypes.POLICY_D_KH
-local eBuilding =  GameInfoTypes.BUILDING_TCM_CONCERT_HALL
 
-function CheckTrading(PlayerID,CityID,eBuilding)
+function CheckTrading(PlayerID,CityID,eBuildingKH)
     local player = Players[PlayerID]
 	for city in player:Cities() do
-		if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(eBuilding) then
-			--player:SetNumFreePolicies(1)
-			--player:SetNumFreePolicies(0)
+		if player:GetCivilizationType() == civilizationID and city:IsHasBuilding(eBuildingKH) then
 			player:SetHasPolicy(iPolicy, true)
 		end
 	end
@@ -233,14 +238,15 @@ end
 function ViribusUnitis(PlayerID)
     local player = Players[PlayerID]
 	local NbConnect = NbCityConnected()
+	local promotionVU = GameInfoTypes.PROMOTION_VIRIBUS_UNITIS
 
     if (player:GetCivilizationType() == civilizationID and player:IsEverAlive()) then
         for unit in player:Units() do
-            if unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and (unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN) then
+            if unit:IsHasPromotion(promotionVU) and (unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_MELEE or unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_GUN) then
 				local baseCombatStrength = GameInfo.Units[unit:GetUnitType()].Combat;
 				unit:SetBaseCombatStrength(baseCombatStrength + (0.15*NbConnect))
 
-			elseif unit:IsHasPromotion(GameInfoTypes.PROMOTION_VIRIBUS_UNITIS) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_SIEGE then
+			elseif unit:IsHasPromotion(promotionVU) and unit:GetUnitCombatType() == GameInfoTypes.UNITCOMBAT_SIEGE then
 				local baseCombatStrength = GameInfo.Units[unit:GetUnitType()].RangedCombat;
 				unit:SetBaseRangedCombatStrength(baseCombatStrength + (0.15*NbConnect))
 			end
@@ -250,12 +256,11 @@ end
 --=============================================================================================
 --KH_Gold_EXPEND
 --=============================================================================================
-local eBuildingKH = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
 local eBuildingDummyKH = GameInfoTypes.BUILDING_DF_LIBRARY
 local eBuildingLibrary = GameInfoTypes.BUILDING_LIBRARY
 
 
--- adds bonus to barracks if TO is built
+-- adds bonus to barracks if KH is built
 function OnCityConstructionAddDummyForKH(iPlayer, iCity, eBuilding)
 	local pPlayer = Players[iPlayer]
 	
@@ -265,8 +270,8 @@ function OnCityConstructionAddDummyForKH(iPlayer, iCity, eBuilding)
 		local iNumberOfLibrary = pPlayer:CountNumBuildings(eBuildingLibrary)
 
 		if iNumberOfLibrary > 0 then
+			local iCurrentLibrary = 0
 			for city in pPlayer:Cities() do
-				local iCurrentLibrary = 0
 
 				if city:IsHasBuilding(eBuildingLibrary) then
 					city:SetNumRealBuilding(eBuildingDummyKH, 1)
@@ -304,9 +309,6 @@ end
 
 -- if is a player, events are executed
 if JFD_IsCivilizationActive(civilizationID) then
-	--GameEvents.UnitPromoted.Add(GE_Grenzer)
-	--GameEvents.UnitUpgraded.Add(GE_Grenzer)
-	--GameEvents.PlayerDoTurn.Add(GE_Grenzer)
 	GameEvents.CityConstructed.Add(OnCityConstructionAddDummyForKH)
 	GameEvents.PlayerCityFounded.Add(OnFoundAddDummyForKH)
 	GameEvents.PlayerDoTurn.Add(EraScaling)
