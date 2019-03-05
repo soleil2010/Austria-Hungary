@@ -4,6 +4,13 @@
 --------------------------------------------------------------
 local civilizationID = GameInfoTypes["CIVILIZATION_TCM_AUSTRIA_HUNGARY"]
 local eBuildingKH = GameInfoTypes.BUILDING_TCM_CONCERT_HALL
+local future = GameInfoTypes.ERA_FUTURE
+local postmodern = GameInfoTypes.POSTMODERN
+local modern = GameInfoTypes.ERA_MODERN
+local industrial = GameInfoTypes.ERA_INDUSTRIAL
+local renaissance = GameInfoTypes.ERA_RENAISSANCE
+local medieval = GameInfoTypes.ERA_MEDIEVAL
+local classical = GameInfoTypes.ERA_CLASSICAL
 --=============================================================================================
 -- UTILITY FUNCTIONS
 --=============================================================================================
@@ -115,37 +122,37 @@ function EraScaling(PlayerID)
 		if city:IsHasBuilding(GameInfoTypes.BUILDING_DF_CONNECTED) then
 				if player:GetCurrentEra() == future then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 16)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 12)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 14)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 8)
 				elseif player:GetCurrentEra() == postmodern then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 14)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 10)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 10)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 7)
 				elseif player:GetCurrentEra() == modern then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 12)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 8)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 8)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 6)
 				elseif player:GetCurrentEra() == industrial then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 10)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 6)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 6)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 5)
 				elseif player:GetCurrentEra() == renaissance then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 8)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 4)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 4)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 4)
 				elseif player:GetCurrentEra() == medieval then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 6)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 3)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 3)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 3)
 				elseif player:GetCurrentEra() == classical then
 
-					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 4)
+					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_PRODUCTION, 2)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_GOLD, 2)
 					city:SetBuildingYieldChange(DummyUA, YieldTypes.YIELD_FAITH, 2)
 				end
@@ -201,6 +208,13 @@ end
 -- Name:		UB Kaiserliche Hofbibliothek Connection Capital
 -- Description:	UB(Unique Building) Gagne +1 de culture par connection (capital uniquement)
 --=============================================================================================
+local future = GameInfoTypes.ERA_FUTURE
+	local postmodern = GameInfoTypes.POSTMODERN
+	local modern = GameInfoTypes.ERA_MODERN
+	local industrial = GameInfoTypes.ERA_INDUSTRIAL
+	local renaissance = GameInfoTypes.ERA_RENAISSANCE
+	local medieval = GameInfoTypes.ERA_MEDIEVAL
+	local classical = GameInfoTypes.ERA_CLASSICAL
 function UBKH(PlayerID)
 	local player = Players[PlayerID]
 	local KHBuildingClass = GameInfoTypes.BUILDINGCLASS_NATIONAL_COLLEGE
@@ -208,7 +222,21 @@ function UBKH(PlayerID)
 	if player:GetCivilizationType() == civilizationID then
 		for city in player:Cities() do
 			if city:IsHasBuilding(eBuildingKH) then
+				if player:GetCurrentEra() == future then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 6*NbCityConnected())
+				elseif player:GetCurrentEra() == postmodern then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 5*NbCityConnected())
+				elseif player:GetCurrentEra() == modern then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 4*NbCityConnected())
+				elseif player:GetCurrentEra() == industrial then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 3*NbCityConnected())
+				elseif player:GetCurrentEra() == renaissance then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 2*NbCityConnected())
+				elseif player:GetCurrentEra() == medieval then
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 1.5*NbCityConnected())
+				elseif player:GetCurrentEra() == classical then
 				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, NbCityConnected())
+				end
 			end
 		end
 	end
