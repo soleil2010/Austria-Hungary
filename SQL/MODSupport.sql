@@ -99,7 +99,7 @@ VALUES		('BUILDING_TCM_AUSTRIA_HUNGARY_STANDSCHUTZEN',	'YIELD_CULTURE',	3),
 INSERT INTO Building_YieldFromVictoryGlobal
 			(BuildingType,										YieldType,			Yield)
 VALUES		('BUILDING_TCM_AUSTRIA_HUNGARY_STANDSCHUTZEN',	'YIELD_PRODUCTION',			5),
-			('BUILDING_TCM_AUSTRIA_HUNGARY_STANDSCHUTZEN',	'YIELD_GOLDEN_AGE_POINTS',	50);
+			('BUILDING_TCM_AUSTRIA_HUNGARY_STANDSCHUTZEN',	'YIELD_GOLDEN_AGE_POINTS',	5);
 --------------------------------	
 -- Building_UnitCombatProductionModifiers
 --------------------------------	
