@@ -223,17 +223,17 @@ function UBKH(PlayerID)
 		for city in player:Cities() do
 			if city:IsHasBuilding(eBuildingKH) then
 				if player:GetCurrentEra() == future then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 6*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 7*NbCityConnected())
 				elseif player:GetCurrentEra() == postmodern then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 5*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 6*NbCityConnected())
 				elseif player:GetCurrentEra() == modern then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 4*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 5*NbCityConnected())
 				elseif player:GetCurrentEra() == industrial then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 3*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 4*NbCityConnected())
 				elseif player:GetCurrentEra() == renaissance then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 2*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 3*NbCityConnected())
 				elseif player:GetCurrentEra() == medieval then
-				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 1.5*NbCityConnected())
+				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, 2*NbCityConnected())
 				elseif player:GetCurrentEra() == classical then
 				city:SetBuildingYieldChange(KHBuildingClass, YieldTypes.YIELD_CULTURE, NbCityConnected())
 				end
