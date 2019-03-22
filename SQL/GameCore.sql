@@ -146,11 +146,11 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'MAJOR_CIV_APPROACH_WAR', 			8),
 --==========================================================================================================================						
 INSERT INTO Leader_MinorCivApproachBiases 
 			(LeaderType, 					MinorCivApproachType, 				Bias)
-VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_IGNORE', 		2),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_FRIENDLY', 		5),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_PROTECTIVE', 	7),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_CONQUEST', 		8),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_BULLY', 		7);
+VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_IGNORE', 		5),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_FRIENDLY', 		6),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_PROTECTIVE', 	5),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_CONQUEST', 		5),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'MINOR_CIV_APPROACH_BULLY', 		6);
 --==========================================================================================================================	
 -- Leader_Flavors
 --==========================================================================================================================						
@@ -159,7 +159,7 @@ INSERT INTO Leader_Flavors
 VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_OFFENSE', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_DEFENSE', 					7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CITY_DEFENSE', 				5),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_MILITARY_TRAINING', 		8),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_MILITARY_TRAINING', 		6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_RECON', 					4),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_RANGED', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_MOBILE', 					5),
@@ -175,12 +175,12 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_OFFENSE', 					5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_PRODUCTION', 				7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GOLD', 						6),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_SCIENCE', 					5),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CULTURE', 					5),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_CULTURE', 					7),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_HAPPINESS', 				8),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_GREAT_PEOPLE', 				8),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_WONDER', 					5),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_RELIGION', 					6),
-			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_DIPLOMACY', 				7),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_RELIGION', 					7),
+			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_DIPLOMACY', 				5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_SPACESHIP', 				4),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_WATER_CONNECTION', 			5),
 			('LEADER_TCM_FRANZ_JOSEPH', 	'FLAVOR_NUKE', 						4),
@@ -203,8 +203,21 @@ VALUES		('LEADER_TCM_FRANZ_JOSEPH', 	'TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY');
 -- Traits
 --==========================================================================================================================	
 INSERT INTO Traits 
-			(Type, 										Description, 																																																																			ShortDescription)
-VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'Cities connected to capital and capital gain +2[ICON_PRODUCTION], +1[ICON_GOLD], +1[ICON_PEACE] , double if city has « We Love The King Day », scaling with era.[NEWLINE]Melee, Gun and Siege units gain the promotion «Viribus Unitis» (+1[ICON_STRENGTH] per 6[ICON_CONNECTED])', 	'Crownlands');
+			(Type, 										Description, 																																																																			ShortDescription,			WLTKDFromGATurns)
+VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 	'Cities connected to capital and capital gain +1[ICON_PRODUCTION], +2[ICON_GOLD], +1[ICON_PEACE] , double if city has « We Love The King Day », scaling with era.[NEWLINE]10 Turns of "We Love The King Day" in the city where a Great person is born)', 									'Crownlands',				10);
+
+--==========================================================================================================================	
+-- Trait_PerPuppetGreatPersonRateModifier
+--==========================================================================================================================	
+INSERT INTO Trait_PerPuppetGreatPersonRateModifier
+			("TraitType",							"GreatPersonType",						"Modifier")
+VALUES		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_ENGINEER',					'3'),
+			('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_SCIENTIST',					'3'),
+			('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_MERCHANT',					'3'),
+			('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_ARTIST',					'3'),
+			('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_MUSICIAN',					'3'),
+			('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'GREATPERSON_WRITER',					'3');
+
 --==========================================================================================================================
 -- AUDIO
 --==========================================================================================================================	
@@ -226,8 +239,8 @@ VALUES		('AS2D_LEADER_MUSIC_TCM_FRANZ_JOSEPH_PEACE', 	'SND_LEADER_MUSIC_TCM_FRAN
 -- Buildings
 --==========================================================================================================================			
 INSERT INTO Buildings
-			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,						Help,																																																															Civilopedia,																																																																																																																																																														Strategy,																																							ArtDefineTag, MinAreaSize, ConquestProb, NumCityCostMod, HurryCostModifier, GreatWorkSlotType,			GreatWorkCount, IconAtlas,					PortraitIndex, CapitalOnly)
-SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'+20% Science in the city during [ICON_GOLDEN_AGE][NEWLINE]+1[ICON_CULTURE] per [ICON_CONNECTED][NEWLINE]When a great person is expanded gain instant [ICON_GOLD] based on the number of [ICON_CONNECTED].[NEWLINE][ICON_CULTURE] when a general is expended or [ICON_RESEARCH] when an admiral is expended.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb,			 10,			   -20, 'GREAT_WORK_SLOT_LITERATURE', 1,			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), 	3,				1
+			(Type, 					    	BuildingClass, Cost, GoldMaintenance, PrereqTech,	Description,						Help,																																																															Civilopedia,																																																																																																																																																														Strategy,																																																		ArtDefineTag, MinAreaSize, ConquestProb, NumCityCostMod, HurryCostModifier,			GreatWorkSlotType,			GreatWorkCount,							IconAtlas,					PortraitIndex, CapitalOnly)
+SELECT		('BUILDING_TCM_CONCERT_HALL'),	BuildingClass, Cost, GoldMaintenance, PrereqTech,	'Kaiserliche Hofbibliothek',	'+20% Science in the city during [ICON_GOLDEN_AGE][NEWLINE]+1[ICON_CULTURE] per [ICON_CONNECTED] City Connection[NEWLINE]When a great person is expanded gain instant [ICON_GOLD] based on the number of [ICON_CONNECTED].[NEWLINE][ICON_CULTURE] when a general is expended or [ICON_RESEARCH] when an admiral is expended.',	'Vienna is known for its culture, and during the 19th century, it was at its height, with people like Mozart composing music in the Habsburg domains. Aside from the coffee shops, Vienna (along with the rest of Austria-Hungary) is known for its concert halls, which remain a tradition throughout Austria to this day. One such example of a concert hall in Vienna would be the Musikverein, renowned for its acoustics and regarded by many as one of the greatest concert halls in the world. The land that the hall is on was provided by none other than Franz Joseph, and remains in great use to this day, housing the Vienna Philharmonic Orchestra.',	'Replaces the Opera House, and yields +2 [ICON_HAPPINESS_1] Happiness. Filling the Great Work of Music slot will generate [ICON_GOLDEN_AGE] Golden Age points.',	ArtDefineTag, MinAreaSize, ConquestProb,			 10,			   -20, 'GREAT_WORK_SLOT_LITERATURE',				1,			 ('TCM_AUSTRIA_HUNGARY_ATLAS'), 							3,				1
 FROM Buildings WHERE Type = 'BUILDING_NATIONAL_COLLEGE';		
 
 --==========================================================================================================================	
@@ -252,7 +265,19 @@ INSERT INTO Building_Flavors
 			(BuildingType, 					FlavorType,				Flavor)
 VALUES		('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_SCIENCE',		30),
 			('BUILDING_TCM_CONCERT_HALL', 	'FLAVOR_CULTURE',		15);
+--==========================================================================================================================	
+-- Building_GreatWorkYieldChanges
+--==========================================================================================================================					
+INSERT INTO Building_GreatWorkYieldChanges
+			("BuildingType", "YieldType", "Yield")
+VALUES		('BUILDING_TCM_CONCERT_HALL', 'YIELD_CULTURE', '1');
 --==========================================================================================================================
+/*
+INSERT INTO Building_FreeUnits
+			(BuildingType,				UnitType, NumUnits)
+VALUES		('BUILDING_TCM_CONCERT_HALL', 'UNIT_PROPHET', 3),
+			('BUILDING_TCM_CONCERT_HALL', 'UNIT_SCIENTIST', 3);
+*/
 --==========================================================================================================================	
 -- Units
 --==========================================================================================================================		
@@ -295,7 +320,7 @@ VALUES		('UNIT_TCM_GRENZER', 	'FLAVOR_OFFENSE',		12),
 
 INSERT INTO UnitPromotions 
 		(Type, 							Description, 			Help, 																													Sound, 				CombatPercent,	CannotBeChosen, 	IgnoreZOC,  LostWithUpgrade,	FriendlyLandsModifier,	PortraitIndex, 	IconAtlas, 			PediaType, 			PediaEntry)
-VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'+1[ICON_STRENGTH] per 6[ICON_CONNECTED]', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
+VALUES	('PROMOTION_VIRIBUS_UNITIS',	'Viribus Unitis', 		'+1[ICON_STRENGTH] per 6[ICON_CONNECTED] City Connection', 																							'AS2D_IF_LEVELUP', 	2,				1, 					0, 			0, 					0,						59, 			'ABILITY_ATLAS',	'PEDIA_ATTRIBUTES', 'Viribus Unitis'),
 		('PROMOTION_GRENZSCHUTZ',		'Grenzschutz',			'Has a [ICON_STRENGTH] Combat Bonus based on the amount of promotions it has, +15% of strength in friendly territory',	'AS2D_IF_LEVELUP',	0,				1,					0,			0,					15,						59,				'ABILITY_ATLAS', 	'PEDIA_MELEE', 'Grenzschutz');
 
 UPDATE UnitPromotions SET IconAtlas = 'extraPromo_Atlas' WHERE Type = 'PROMOTION_VIRIBUS_UNITIS';
@@ -321,12 +346,13 @@ INSERT INTO Unit_FreePromotions
 VALUES	('UNIT_TCM_GRENZER', 	'PROMOTION_SURVIVALISM_1'),
 		('UNIT_TCM_GRENZER', 	'PROMOTION_WOODLAND_TRAILBLAZER_I'),
 		('UNIT_TCM_GRENZER', 	'PROMOTION_JAEGER');
-
+/*
 INSERT INTO Trait_FreePromotionUnitCombats
 		(TraitType, UnitCombatType, PromotionType)
 VALUES	('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_GUN', 'PROMOTION_VIRIBUS_UNITIS'),
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_MELEE', 'PROMOTION_VIRIBUS_UNITIS'),
 		('TRAIT_TCM_FRANZ_JOSEPH_AUSTRIA_HUNGARY', 'UNITCOMBAT_SIEGE', 'PROMOTION_VIRIBUS_UNITIS');
+		*/
 --==========================================================================================================================
 -- UnitPromotions_UnitCombats jaeger
 --==========================================================================================================================	

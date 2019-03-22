@@ -9,21 +9,25 @@ VALUES		('BUILDINGCLASS_DF_LIBRARY', 'BUILDING_DF_LIBRARY', 1);
 --Buildings
 
 INSERT INTO Buildings
-			(Type,				BuildingClass,				Description, GoldMaintenance, Cost, FaithCost, GreatWorkCount, NeverCapture, NukeImmune, ConquestProb, HurryCostModifier, IconAtlas,		PortraitIndex, IsDummy)
-VALUES		('BUILDING_DF_LIBRARY','BUILDINGCLASS_DF_LIBRARY',	'Teste',	 0,					-1,		-1,			-1,				1,			1,			0,			-1,				'CIV_COLOR_ATLAS',		0,			1);
+			(Type,				BuildingClass,					Description, GoldMaintenance, Cost, FaithCost, GreatWorkCount, NeverCapture, NukeImmune, ConquestProb, HurryCostModifier, GreatPeopleRateModifier,		IconAtlas,		PortraitIndex, IsDummy	)
+VALUES		('BUILDING_DF_LIBRARY','BUILDINGCLASS_DF_LIBRARY',		'Teste',	 0,					-1,		-1,			-1,				1,			1,			0,					-1,							25,'CIV_COLOR_ATLAS',		0,			1	);
 
 
 
 --Building_YieldFromGPExpend
 
-INSERT INTO Building_YieldFromGPExpend
-			(BuildingType, YieldType, Yield)
-VALUES		('BUILDING_DF_LIBRARY', 'YIELD_GOLD', 25);
+INSERT INTO Building_GreatWorkYieldChangesLocal
+			("BuildingType",		"YieldType", "Yield")
+VALUES		('BUILDING_DF_LIBRARY', 'YIELD_SCIENCE', '1');
 
+INSERT INTO Building_UnhappinessNeedsFlatReduction
+			("BuildingType", "YieldType", "Yield")
+VALUES		('BUILDING_DF_LIBRARY', 'YIELD_SCIENCE', '1');
 
 --=============================================
 --Policy Dummy for KH
 --=============================================
+/*
 INSERT INTO Policies
 		(Type,			description,				IsDummy)
 VALUES	('POLICY_D_KH','testPol',					1);
@@ -32,7 +36,7 @@ INSERT INTO Policy_GreatPersonExpendedYield
 		(PolicyType,	GreatPersonType,	YieldType,		Yield)
 VALUES	('POLICY_D_KH',	'GREATPERSON_ADMIRAL'	,'YIELD_SCIENCE', 100),
 		('POLICY_D_KH',	'GREATPERSON_GENERAL'	,'YIELD_CULTURE', 100);
-
+*/
  --===========================================
  --Dummies
  --===========================================

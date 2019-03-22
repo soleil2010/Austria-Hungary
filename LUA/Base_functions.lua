@@ -183,6 +183,7 @@ end
 -- Name:		UB Kaiserliche Hofbibliothek_GG_GA
 -- Description:	UB (Unique Building) gagne culture flat quand generel expend et science quand amiral expend (Dummy policy) (voir sql)
 --=============================================================================================
+--[[
 function CheckTrading(PlayerID,CityID,eBuildingKH)
 	local iPolicy = GameInfoTypes.POLICY_D_KH
     local player = Players[PlayerID]
@@ -192,12 +193,13 @@ function CheckTrading(PlayerID,CityID,eBuildingKH)
 		end
 	end
 end
-
+]]
 --=============================================================================================
 --Name:			ViribusUnitis
 --Description:	Melee and Gun units have a strength bonus per city connected to capital.
 --				Siege units have a ranged combat bonus per city connected to capital.
 --=============================================================================================
+--[[
 function ViribusUnitis(PlayerID)
     local player = Players[PlayerID]
 	local NbConnect = NbCityConnected()
@@ -216,7 +218,7 @@ function ViribusUnitis(PlayerID)
 		end
 	end
 end
-
+]]
 --=============================================================================================
 --Name:			OnCityConstructionAddDummyForKH
 --Description:	Add dummy after new constructed city and require the KH are builded
@@ -278,6 +280,6 @@ if JFD_IsCivilizationActive(civilizationID) then
 	GameEvents.PlayerDoTurn.Add(UAConnection)
 	GameEvents.PlayerCityFounded.Add(UAFranzCapital)
 	GameEvents.PlayerDoTurn.Add(UBKH)
-	GameEvents.CityConstructed.Add(CheckTrading)
-	GameEvents.PlayerDoTurn.Add(ViribusUnitis)
+	--GameEvents.CityConstructed.Add(CheckTrading)
+	--GameEvents.PlayerDoTurn.Add(ViribusUnitis)
 end
